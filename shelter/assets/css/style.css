@@ -1,0 +1,206 @@
+@font-face {
+  font-family: "Arial";
+  src: url("../fonts/ArialMT.woff2") format("woff2"), url("../fonts/ArialMT.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arial";
+  src: url("../fonts/Arial-ItalicMT.woff2") format("woff2"), url("../fonts/Arial-ItalicMT.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Georgia";
+  src: url("../fonts/Georgia.woff2") format("woff2"), url("../fonts/Georgia.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Georgia";
+  src: url("../fonts/Georgia-Bold.woff2") format("woff2"), url("../fonts/Georgia-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 160%;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+h2 {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 130%;
+  color: #ffffff;
+}
+
+h3 {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+
+h4 {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+
+h5 {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+
+.logo .logo__text {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+.logo_main h1 {
+  color: #f1cdb3;
+}
+.logo_main .logo__text {
+  color: #ffffff;
+}
+.logo_out h1 {
+  color: #545454;
+}
+.logo_out .logo__text {
+  color: #292929;
+}
+.logo:hover {
+  cursor: pointer;
+}
+
+h1 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.navigation .navigation__link_active {
+  position: relative;
+}
+.navigation .navigation__link_active::after {
+  content: " ";
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  background-color: #f1cdb3;
+}
+.navigation_main .navigation__link {
+  color: #cdcdcd;
+}
+.navigation_main .navigation__link:hover {
+  color: #fafafa;
+}
+.navigation_main .navigation__link_active {
+  color: #fafafa;
+}
+.navigation_out .navigation__link {
+  color: #545454;
+}
+.navigation_out .navigation__link:hover {
+  color: #292929;
+}
+.navigation_out .navigation__link_active {
+  color: #292929;
+}
+
+.header__navigation {
+  display: flex;
+}
+.header__navigation li {
+  margin-left: 36px;
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.header {
+  padding: 30px 0;
+}
+.header_main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+@media (min-width: 1100px) {
+  .header_main {
+    padding: 60px 0;
+  }
+}
+.header_out {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: #ffffff;
+}
+
+.header__wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.logo {
+  margin-right: auto;
+}
+
+/*# sourceMappingURL=style.css.map */

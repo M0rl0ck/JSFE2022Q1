@@ -1,0 +1,40 @@
+.logo {
+  .logo__text {
+    font-family: "Arial";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  &_main {
+    h1 {
+      color: #f1cdb3;
+    }
+
+    .logo__text {
+      color: #ffffff;
+    }
+  }
+
+  &_out {
+    h1 {
+      color: #545454;
+    }
+
+    .logo__text {
+      color: #292929;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+h1 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
