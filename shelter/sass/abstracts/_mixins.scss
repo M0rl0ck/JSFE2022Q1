@@ -1,0 +1,5 @@
+@mixin media-min-destop {
+  @media (min-width: $min-dest-widht) {
+    @content;
+  }
+}

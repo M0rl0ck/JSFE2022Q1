@@ -1,12 +1,18 @@
+//abstracts
+@import "abstracts/constans";
+@import "abstracts/mixins";
+
 //base
 @import "base/font";
 @import "base/base";
 @import "base/logo";
 @import "base/navigation";
+@import "base/buttons";
 
 //layout
 @import "layout/wrapper";
 
 //components
 @import "components/header";
+@import "components/not-only";
 @import "components/footer";

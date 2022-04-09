@@ -1,0 +1,24 @@
+.button-link {
+  display: inline-block;
+  padding: 13px 43px;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #292929;
+  border: 2px solid #f1cdb3;
+  border-radius: 100px;
+  &_colored {
+    background-color: #f1cdb3;
+    &:hover {
+      background-color: #fddcc4;
+    }
+  }
+  &_bordered {
+    &:hover {
+      background-color: #fddcc4;
+    }
+  }
+}
