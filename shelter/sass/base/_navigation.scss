@@ -17,6 +17,7 @@
   &_main {
     .navigation__link {
       color: #cdcdcd;
+      @include transit;
       &:hover {
         color: #fafafa;
       }

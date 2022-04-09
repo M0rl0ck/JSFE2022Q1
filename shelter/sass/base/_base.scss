@@ -43,7 +43,7 @@ h3 {
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
-  line-height: 130%;
+  line-height: 129%;
   letter-spacing: 0.06em;
   color: #545454;
 }
@@ -56,6 +56,7 @@ h4 {
   line-height: 115%;
   letter-spacing: 0.06em;
   color: #545454;
+  text-align: center;
 }
 
 h5 {
@@ -66,4 +67,10 @@ h5 {
   line-height: 110%;
   letter-spacing: 0.06em;
   color: #545454;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
 }

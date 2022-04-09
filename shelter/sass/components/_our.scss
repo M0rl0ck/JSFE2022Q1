@@ -1,0 +1,49 @@
+.our {
+  background: #f6f6f6;
+  padding-bottom: 100px;
+  &_pets {
+    padding-top: 120px;
+  }
+}
+
+.wrapper__our {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.our__title {
+  text-align: center;
+  padding-left: 2px;
+}
+
+.our__content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 58px;
+  padding-bottom: 60px;
+}
+
+.our__button-arrey {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.our__pets {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 8px;
+  padding-right: 7px;
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 40px;
+  row-gap: 30px;
+}

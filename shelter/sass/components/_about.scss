@@ -1,0 +1,23 @@
+.about {
+  background: #ffffff;
+}
+.wrapper__about {
+  padding-top: 80px;
+  padding-bottom: 89px;
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+}
+
+.about__content {
+  max-width: 430px;
+}
+
+.about__title {
+  max-width: 370px;
+  margin-top: 15px;
+}
+
+.about__text {
+  margin: 25px 0;
+}
