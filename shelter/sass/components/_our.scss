@@ -46,4 +46,13 @@
   justify-content: space-between;
   column-gap: 40px;
   row-gap: 30px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.pagination-buttons {
+  max-width: 340px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

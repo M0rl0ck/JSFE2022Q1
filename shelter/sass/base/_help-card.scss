@@ -1,0 +1,16 @@
+.help__card {
+  width: 170px;
+  height: 113px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  @include media-min-destop {
+    width: auto;
+  }
+
+  img {
+    width: 60px;
+    height: 60px;
+  }
+}

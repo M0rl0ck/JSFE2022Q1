@@ -14,11 +14,13 @@
   &_colored {
     background-color: #f1cdb3;
     &:hover {
+      border-color: #fddcc4;
       background-color: #fddcc4;
     }
   }
   &_bordered {
     &:hover {
+      border-color: #fddcc4;
       background-color: #fddcc4;
     }
   }
@@ -39,6 +41,7 @@
   line-height: 115%;
   text-align: center;
   letter-spacing: 0.06em;
+  padding-bottom: 2px;
   img {
     width: 14px;
     height: 6px;
@@ -51,6 +54,7 @@
     @include transit;
     &:hover {
       background: #fddcc4;
+      border-color: #fddcc4;
     }
   }
 
@@ -60,6 +64,7 @@
   }
 
   &_colored {
+    border-color: #f1cdb3;
     background: #f1cdb3;
     color: #292929;
   }
