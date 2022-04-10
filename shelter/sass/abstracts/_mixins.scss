@@ -1,0 +1,8 @@
+@mixin transit {
+  transition: all 0.5s;
+}
+@mixin media-min-destop {
+  @media (min-width: $min-dest-widht) {
+    @content;
+  }
+}

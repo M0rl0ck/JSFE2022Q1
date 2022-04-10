@@ -1,0 +1,72 @@
+.button-link {
+  display: inline-block;
+  padding: 13px 43px;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #292929;
+  border: 2px solid #f1cdb3;
+  border-radius: 100px;
+  @include transit;
+  &_colored {
+    background-color: #f1cdb3;
+    &:hover {
+      border-color: #fddcc4;
+      background-color: #fddcc4;
+    }
+  }
+  &_bordered {
+    &:hover {
+      border-color: #fddcc4;
+      background-color: #fddcc4;
+    }
+  }
+}
+
+.button {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid;
+  border-radius: 50%;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  text-align: center;
+  letter-spacing: 0.06em;
+  padding-bottom: 2px;
+  background: #f6f6f6;
+  img {
+    width: 14px;
+    height: 6px;
+    margin-top: 1px;
+  }
+  &_active {
+    color: #292929;
+    border-color: #f1cdb3;
+    cursor: pointer;
+    @include transit;
+    &:hover {
+      background: #fddcc4;
+      border-color: #fddcc4;
+    }
+  }
+
+  &_disabled {
+    border-color: #cdcdcd;
+    color: #cdcdcd;
+  }
+
+  &_colored {
+    border-color: #f1cdb3;
+    background: #f1cdb3;
+    color: #292929;
+  }
+}

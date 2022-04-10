@@ -1,0 +1,48 @@
+.navigation {
+  .navigation__link {
+    &_active {
+      position: relative;
+      &::after {
+        content: " ";
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        left: 0;
+        bottom: -7px;
+
+        background-color: #f1cdb3;
+      }
+    }
+  }
+  &_main {
+    .navigation__link {
+      color: #cdcdcd;
+      @include transit;
+      &:hover {
+        color: #fafafa;
+      }
+      &_active {
+        color: #fafafa;
+      }
+    }
+  }
+  &_out {
+    .navigation__link {
+      color: #545454;
+      &:hover {
+        color: #292929;
+      }
+      &_active {
+        color: #292929;
+      }
+    }
+  }
+}
+
+.header__navigation {
+  display: flex;
+  li {
+    padding-bottom: 5px;
+    margin-left: 36px;
+  }
+}
