@@ -3,4 +3,9 @@
   margin: 0 auto;
   padding-left: 40px;
   padding-right: 40px;
+
+  @include media-max-tablet {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }

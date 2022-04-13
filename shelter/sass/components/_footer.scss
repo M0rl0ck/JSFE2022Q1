@@ -7,8 +7,12 @@
 .wrapper__footer {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
   padding-top: 40px;
+  @include media-max-tablet(1120px) {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+  }
 }
 
 .footer__content {
@@ -17,6 +21,10 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  @include media-max-tablet(1120px) {
+    justify-content: center;
+    column-gap: 40px;
+  }
 }
 
 .footer__contact,
@@ -27,6 +35,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @include media-max-tablet(1120px) {
+    row-gap: 32px;
+    padding-bottom: 66px;
+  }
 }
 
 .footer__contact {

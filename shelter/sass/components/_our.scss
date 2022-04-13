@@ -3,6 +3,9 @@
   padding-bottom: 100px;
   &_pets {
     padding-top: 120px;
+    @include media-max-tablet(1139px) {
+      padding-bottom: 76px;
+    }
   }
 }
 
@@ -24,6 +27,9 @@
   justify-content: space-between;
   padding-top: 58px;
   padding-bottom: 60px;
+  @include media-max-tablet(1040px) {
+    padding-top: 59px;
+  }
 }
 
 .our__button-arrey {
@@ -38,16 +44,33 @@
   justify-content: space-around;
   padding-left: 8px;
   padding-right: 7px;
+  @include media-max-tablet(1040px) {
+    justify-content: space-between;
+    padding: 0 12px;
+    .item3 {
+      display: none;
+    }
+  }
 }
 
 .pagination {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  column-gap: 40px;
+
   row-gap: 30px;
   padding-top: 60px;
   padding-bottom: 60px;
+  @include media-max-tablet(1139px) {
+    justify-content: center;
+    column-gap: 40px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    .item7,
+    .item8 {
+      display: none;
+    }
+  }
 }
 
 .pagination-buttons {

@@ -12,12 +12,22 @@
 .wrapper__not-only {
   display: flex;
   padding-top: 30px;
+  @include media-max-tablet() {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .not-only__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   .not-only__title {
     margin-top: 164px;
     max-width: 310px;
+    @include media-max-tablet() {
+      margin-top: 0;
+    }
   }
 
   .not-only__text {
@@ -25,8 +35,18 @@
     margin: 41px 0 42px 0;
     color: #cdcdcd;
   }
+
+  .button-link {
+    @include media-max-tablet() {
+      align-self: center;
+    }
+  }
 }
 
 .not-only__foto {
   margin-left: auto;
+  @include media-max-tablet() {
+    margin-top: 100px;
+    max-width: 80.4%;
+  }
 }

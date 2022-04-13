@@ -7,6 +7,12 @@
   display: flex;
   justify-content: center;
   gap: 120px;
+  @include media-max-tablet($max-tablet-with) {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 55px;
+    padding-bottom: 100px;
+  }
 }
 
 .about__content {
@@ -16,6 +22,9 @@
 .about__title {
   max-width: 370px;
   margin-top: 15px;
+  @include media-max-tablet($max-tablet-with) {
+    margin-top: 0;
+  }
 }
 
 .about__text {

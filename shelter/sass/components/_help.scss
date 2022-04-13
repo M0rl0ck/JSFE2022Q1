@@ -4,6 +4,9 @@
 .wrapper__help {
   padding-top: 81px;
   padding-bottom: 100px;
+  @include media-max-tablet() {
+    padding-top: 80px;
+  }
 }
 
 .help__title {
@@ -13,12 +16,13 @@
 }
 
 .help__cards {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
   justify-content: center;
   column-gap: 60px;
   row-gap: 55px;
   @include media-min-destop {
+    display: flex;
     column-gap: 120px;
   }
 }
