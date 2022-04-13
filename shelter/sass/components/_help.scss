@@ -17,9 +17,9 @@
 
 .help__cards {
   display: grid;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(3, 170px);
   justify-content: center;
-  column-gap: 60px;
+  column-gap: 8.5%;
   row-gap: 55px;
   @include media-min-destop {
     display: flex;

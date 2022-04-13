@@ -577,8 +577,11 @@ h1 {
 }
 @media (max-width: 1139px) {
   .pagination {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 270px);
     justify-content: center;
-    column-gap: 40px;
+    column-gap: 5.6%;
     padding-top: 30px;
     padding-bottom: 40px;
   }
@@ -617,9 +620,9 @@ h1 {
 
 .help__cards {
   display: grid;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(3, 170px);
   justify-content: center;
-  column-gap: 60px;
+  column-gap: 8.5%;
   row-gap: 55px;
 }
 @media (min-width: 1250px) {
