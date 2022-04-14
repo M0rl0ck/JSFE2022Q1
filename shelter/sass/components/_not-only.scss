@@ -22,6 +22,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  @include media-max-tablet($max-mobile-widht) {
+    align-items: center;
+  }
   .not-only__title {
     margin-top: 164px;
     max-width: 310px;
@@ -34,6 +37,9 @@
     max-width: 460px;
     margin: 41px 0 42px 0;
     color: #cdcdcd;
+    @include media-max-tablet($max-mobile-widht) {
+      text-align: center;
+    }
   }
 
   .button-link {
@@ -48,5 +54,9 @@
   @include media-max-tablet() {
     margin-top: 100px;
     max-width: 80.4%;
+  }
+  @include media-max-tablet($max-mobile-widht) {
+    max-width: 86.6%;
+    margin-top: 106px;
   }
 }

@@ -8,4 +8,9 @@
     padding-left: 30px;
     padding-right: 30px;
   }
+
+  @include media-max-tablet($max-mobile-widht) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }

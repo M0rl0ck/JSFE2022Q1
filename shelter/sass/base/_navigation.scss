@@ -1,4 +1,7 @@
 .navigation {
+  @include media-max-tablet($max-mobile-widht) {
+    display: none;
+  }
   .navigation__link {
     &_active {
       position: relative;

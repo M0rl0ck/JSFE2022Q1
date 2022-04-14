@@ -17,5 +17,9 @@
   }
   .pet-card__title {
     margin: 30px;
+    @include media-max-tablet($max-mobile-widht) {
+      font-size: 20px;
+      line-height: 23px;
+    }
   }
 }

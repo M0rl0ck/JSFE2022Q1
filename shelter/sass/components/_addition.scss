@@ -15,24 +15,38 @@
     padding-top: 81px;
     padding-bottom: 100px;
   }
+  @include media-max-tablet($max-mobile-widht) {
+    padding-top: 42px;
+    padding-bottom: 42px;
+    row-gap: 23px;
+  }
 }
 
 .addition__img {
   padding-top: 10px;
   padding-left: 1px;
+  @include media-max-tablet($max-mobile-widht) {
+    max-width: 505px;
+    width: 86.6%;
+    padding-top: 0;
+  }
 }
 
 .addition__content {
   max-width: 380px;
+
   .button-link {
     display: inline-flex;
-  }
-  .button-link {
     font-size: 20px;
     line-height: 115%;
     border: 0;
     border-radius: 9px;
     padding: 10px 15px;
+    @include media-max-tablet($max-mobile-widht) {
+      text-align: center;
+      font-size: 15px;
+      line-height: 130%;
+    }
   }
 }
 
@@ -44,6 +58,14 @@
 
 .addition__title-card {
   margin: 20px 0 19px 0;
+  @include media-max-tablet($max-mobile-widht) {
+    line-height: 160%;
+    letter-spacing: 0em;
+    text-align: center;
+  }
+  @include media-max-tablet($max-mobile-widht) {
+    margin-bottom: 21px;
+  }
 }
 
 .addition__text {
@@ -52,4 +74,8 @@
   line-height: 18px;
   color: #b2b2b2;
   margin: 20px 0;
+  @include media-max-tablet($max-mobile-widht) {
+    max-width: 280px;
+    text-align: justify;
+  }
 }

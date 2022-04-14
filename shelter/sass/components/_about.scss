@@ -13,10 +13,18 @@
     gap: 55px;
     padding-bottom: 100px;
   }
+  @include media-max-tablet($max-mobile-widht) {
+    padding-top: 42px;
+    padding-bottom: 43px;
+    gap: 19px;
+  }
 }
 
 .about__content {
   max-width: 430px;
+  @include media-max-tablet($max-mobile-widht) {
+    max-width: 270px;
+  }
 }
 
 .about__title {
@@ -25,8 +33,21 @@
   @include media-max-tablet($max-tablet-with) {
     margin-top: 0;
   }
+  @include media-max-tablet($max-mobile-widht) {
+    margin-bottom: 25px;
+  }
 }
 
 .about__text {
   margin: 25px 0;
+  text-align: justify;
+  @include media-max-tablet($max-mobile-widht) {
+    margin: 22px 0;
+  }
+}
+.about__foto {
+  @include media-max-tablet($max-mobile-widht) {
+    max-width: 300px;
+    width: 86.6%;
+  }
 }
