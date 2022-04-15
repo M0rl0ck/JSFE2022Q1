@@ -32,6 +32,19 @@
   &:hover {
     cursor: pointer;
   }
+
+  &_nav {
+    display: none;
+    @include media-max-tablet($max-mobile-widht) {
+      display: inline-block;
+      h1 {
+        color: #f1cdb3;
+      }
+      .logo__text {
+        color: #ffffff;
+      }
+    }
+  }
 }
 
 h1 {
