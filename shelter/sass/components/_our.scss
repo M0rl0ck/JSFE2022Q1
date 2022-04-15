@@ -3,6 +3,12 @@
   padding-bottom: 100px;
   &_pets {
     padding-top: 120px;
+    @include media-max-tablet(1139px) {
+      padding-bottom: 76px;
+    }
+  }
+  @include media-max-tablet($max-mobile-widht) {
+    padding-bottom: 42px;
   }
 }
 
@@ -11,6 +17,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  @include media-max-tablet($max-mobile-widht) {
+    padding-top: 40px;
+  }
 }
 
 .our__title {
@@ -24,12 +33,26 @@
   justify-content: space-between;
   padding-top: 58px;
   padding-bottom: 60px;
+  @include media-max-tablet(1040px) {
+    padding-top: 59px;
+  }
+  @include media-max-tablet($max-mobile-widht) {
+    padding-top: 43px;
+    padding-bottom: 42px;
+    justify-content: center;
+    column-gap: 27%;
+    row-gap: 20px;
+    flex-wrap: wrap;
+  }
 }
 
 .our__button-arrey {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @include media-max-tablet($max-mobile-widht) {
+    order: 2;
+  }
 }
 
 .our__pets {
@@ -38,16 +61,52 @@
   justify-content: space-around;
   padding-left: 8px;
   padding-right: 7px;
+  @include media-max-tablet(1040px) {
+    justify-content: space-between;
+    padding: 0 12px;
+    .item3 {
+      display: none;
+    }
+  }
+  @include media-max-tablet($max-mobile-widht) {
+    order: 1;
+    justify-content: center;
+    .item2 {
+      display: none;
+    }
+  }
 }
 
 .pagination {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  column-gap: 40px;
   row-gap: 30px;
   padding-top: 60px;
   padding-bottom: 60px;
+  @include media-max-tablet(1139px) {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 270px);
+    justify-content: center;
+    column-gap: 5.6%;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    .item7,
+    .item8 {
+      display: none;
+    }
+  }
+  @include media-max-tablet($max-mobile-widht) {
+    grid-template-columns: 270px;
+    padding-top: 43px;
+    padding-bottom: 42px;
+    .item4,
+    .item5,
+    .item6 {
+      display: none;
+    }
+  }
 }
 
 .pagination-buttons {
