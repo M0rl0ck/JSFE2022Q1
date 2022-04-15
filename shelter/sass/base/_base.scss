@@ -5,18 +5,28 @@
 
 html {
   scroll-behavior: smooth;
+  @include media-max-tablet($max-mobile-widht) {
+    overflow-x: hidden;
+  }
 }
-
-body {
+.body {
   font-family: "Arial";
   font-style: normal;
   font-weight: normal;
   font-size: 15px;
   line-height: 160%;
+  @include media-max-tablet($max-mobile-widht) {
+    position: relative;
+    overflow-x: hidden;
+  }
 }
 
 a {
   text-decoration: none;
+}
+
+ul {
+  padding: 0;
 }
 
 li {
