@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   gap: 120px;
-  @include media-max-tablet($max-tablet-with) {
+  @include media-max-tablet() {
     flex-direction: column-reverse;
     align-items: center;
     gap: 55px;
@@ -40,8 +40,9 @@
 
 .about__text {
   margin: 25px 0;
-  text-align: justify;
+
   @include media-max-tablet($max-mobile-widht) {
+    text-align: justify;
     margin: 22px 0;
   }
 }
