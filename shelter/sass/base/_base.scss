@@ -4,7 +4,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  // scroll-behavior: smooth;
   @include media-max-tablet($max-mobile-widht) {
     overflow-x: hidden;
   }
@@ -15,9 +15,15 @@ html {
   font-weight: normal;
   font-size: 15px;
   line-height: 160%;
-  @include media-max-tablet($max-mobile-widht) {
-    position: relative;
-    overflow-x: hidden;
+  position: relative;
+  overflow-x: hidden;
+
+  &_no-scrool {
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
   }
 }
 
