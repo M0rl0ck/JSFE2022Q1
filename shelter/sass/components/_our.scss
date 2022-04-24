@@ -65,16 +65,10 @@
     justify-content: center;
     gap: 40px;
     padding: 0 12px;
-    .item3 {
-      display: none;
-    }
   }
   @include media-max-tablet($max-mobile-widht) {
     order: 1;
     justify-content: center;
-    .item2 {
-      display: none;
-    }
   }
 }
 
