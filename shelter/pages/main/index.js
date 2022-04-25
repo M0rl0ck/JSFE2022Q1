@@ -2,7 +2,7 @@ import "../../assets/script/hamburger.js";
 import { stopScrool, startScrool } from "../../assets/script/hamburger.js";
 import { data } from "../../assets/script/constans.js";
 import { PetsCards } from "../../assets/script/petsCard.js";
-import { PopUp } from "../../assets/script/popup.js";
+import { openModal } from "../../assets/script/functions.js";
 
 let windowWidth = document.documentElement.clientWidth;
 const ourPetsContainer = document.querySelector(".our__pets");
@@ -17,6 +17,12 @@ data.forEach((obj) => {
   let cardPet = pet.generatePetCard();
   petCardsArrey.push(cardPet);
 });
+for (let i = 0; i < petCardsArrey.length; i++) {
+  let randomIndex = Math.floor(Math.random() * petCardsArrey.length);
+  let a = petCardsArrey[i];
+  petCardsArrey[i] = petCardsArrey[randomIndex];
+  petCardsArrey[randomIndex] = a;
+}
 
 const start = () => {
   windowWidth = document.documentElement.clientWidth;
@@ -31,6 +37,14 @@ const start = () => {
   ourPetsContainer.innerHTML = "";
   for (let i = 0; i < columnPets; i++) {
     ourPetsContainer.append(petCardsArrey[i]);
+  }
+  for (let i = columnPets; i < petCardsArrey.length; i++) {
+    let randomIndex =
+      Math.floor(Math.random() * (petCardsArrey.length - columnPets)) +
+      columnPets;
+    let a = petCardsArrey[i];
+    petCardsArrey[i] = petCardsArrey[randomIndex];
+    petCardsArrey[randomIndex] = a;
   }
   document
     .querySelectorAll(".pet-card")
@@ -52,33 +66,7 @@ const goRight = () => {
   start();
 };
 
-const openModal = (e) => {
-  let petId = e.currentTarget.dataset.id;
-  let overCard = new PopUp(
-    data.find((item) => item.name === petId)
-  ).generatePopUpWindow();
-  document.body.append(overCard);
-  stopScrool();
-  document.querySelector(".overlay").addEventListener("click", closeModal);
-};
-
-const closeModal = (e) => {
-  let classes = e.target.classList;
-  if (
-    classes.contains("overlay") ||
-    classes.contains("button") ||
-    classes.contains("button__img")
-  ) {
-    startScrool();
-    document.querySelector(".overlay").remove();
-  }
-};
-
 start();
-
-// let overCard = new PopUp(data[1]).generatePopUpWindow();
-// document.body.append(overCard);
-// console.log(overCard);
 
 window.addEventListener("resize", start);
 buttonLeft.addEventListener("click", goLeft);
