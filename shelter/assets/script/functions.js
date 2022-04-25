@@ -22,7 +22,6 @@ const generateIndexPetCardsArrey = (col) => {
 
 const generateMaxArrey = () => {
   let arr = generateArrey();
-  console.log(arr);
   return resortArr(arr, 8);
 };
 
