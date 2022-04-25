@@ -431,6 +431,13 @@ h1 {
   z-index: 7;
   background: rgba(41, 41, 41, 0.6);
 }
+.overlay:hover {
+  cursor: pointer;
+}
+.overlay:hover .button {
+  background: #fddcc4;
+  border-color: #fddcc4;
+}
 
 .overlay__container {
   width: 900px;
@@ -439,10 +446,21 @@ h1 {
   position: relative;
   background-color: #fafafa;
 }
+.overlay__container:hover {
+  cursor: auto;
+}
+.overlay__container:hover .button {
+  background: #f6f6f6;
+  border-color: #f1cdb3;
+}
 .overlay__container .button {
   position: absolute;
   top: -52px;
   right: -42px;
+}
+.overlay__container .button:hover {
+  background: #fddcc4;
+  border-color: #fddcc4;
 }
 @media (max-width: 767.95px) {
   .overlay__container .button {

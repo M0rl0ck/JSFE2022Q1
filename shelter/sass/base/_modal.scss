@@ -9,13 +9,13 @@
   height: 100%;
   z-index: 7;
   background: rgba(41, 41, 41, 0.6);
-  // &:hover {
-  //   cursor: pointer;
-  //   .button {
-  //     background: #fddcc4;
-  //     border-color: #fddcc4;
-  //   }
-  // }
+  &:hover {
+    cursor: pointer;
+    .button {
+      background: #fddcc4;
+      border-color: #fddcc4;
+    }
+  }
 }
 
 .overlay__container {
@@ -24,10 +24,21 @@
   display: flex;
   position: relative;
   background-color: #fafafa;
+  &:hover {
+    cursor: auto;
+    .button {
+      background: #f6f6f6;
+      border-color: #f1cdb3;
+    }
+  }
   .button {
     position: absolute;
     top: -52px;
     right: -42px;
+    &:hover {
+      background: #fddcc4;
+      border-color: #fddcc4;
+    }
     @include media-max-tablet($max-mobile-widht) {
       right: -30px;
     }
