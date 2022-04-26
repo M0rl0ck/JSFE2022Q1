@@ -999,12 +999,33 @@ h1 {
   }
 }
 
+.our__pets__wrapper {
+  width: 100%;
+  height: 435px;
+  position: relative;
+  overflow-x: hidden;
+}
+
 .our__pets {
   width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-around;
   padding-left: 8px;
   padding-right: 7px;
+  transition: all 0.5s;
+}
+.our__pets_left {
+  top: 0;
+  left: -100%;
+  transition: all 0.5s;
+}
+.our__pets_right {
+  top: 0;
+  left: 100%;
+  transition: all 0.5s;
 }
 @media (max-width: 1279.95px) {
   .our__pets {

@@ -5,7 +5,7 @@ import { PetsCards } from "../../assets/script/petsCard.js";
 import { openModal } from "../../assets/script/functions.js";
 
 let windowWidth = document.documentElement.clientWidth;
-const ourPetsContainer = document.querySelector(".our__pets");
+const couruselWrapper = document.querySelector(".our__pets__wrapper");
 const buttonLeft = document.querySelector(".our__button-arrey_left");
 const buttonRight = document.querySelector(".our__button-arrey_right");
 
@@ -26,6 +26,7 @@ for (let i = 0; i < petCardsArrey.length; i++) {
 
 const start = () => {
   windowWidth = document.documentElement.clientWidth;
+  let ourPetsContainer = document.querySelector(".our__pets");
 
   if (windowWidth >= 1280) {
     columnPets = 3;
@@ -52,18 +53,57 @@ const start = () => {
 };
 
 const goLeft = () => {
+  buttonLeft.removeEventListener("click", goLeft);
+  buttonRight.removeEventListener("click", goRight);
+  let tempContainer = document.querySelector(".our__pets");
   for (let i = 0; i < columnPets; i++) {
     let tempCard = petCardsArrey.shift();
     petCardsArrey.push(tempCard);
   }
-  start();
+  let ourContainer = document.createElement("div");
+  ourContainer.className = "our__pets our__pets_right";
+  for (let i = 0; i < columnPets; i++) {
+    ourContainer.append(petCardsArrey[i]);
+  }
+  couruselWrapper.append(ourContainer);
+  setTimeout(() => {
+    tempContainer.classList.add("our__pets_left");
+    ourContainer.classList.remove("our__pets_right");
+  }, 200);
+  ourContainer.addEventListener("transitionend", () => {
+    tempContainer.remove();
+    buttonLeft.addEventListener("click", goLeft);
+    buttonRight.addEventListener("click", goRight);
+  });
+
+  // start();
 };
 const goRight = () => {
+  buttonLeft.removeEventListener("click", goLeft);
+  buttonRight.removeEventListener("click", goRight);
+  let tempContainer = document.querySelector(".our__pets");
   for (let i = 0; i < columnPets; i++) {
     let tempCard = petCardsArrey.pop();
     petCardsArrey.unshift(tempCard);
   }
-  start();
+
+  let ourContainer = document.createElement("div");
+  ourContainer.className = "our__pets our__pets_left";
+  for (let i = 0; i < columnPets; i++) {
+    ourContainer.append(petCardsArrey[i]);
+  }
+  couruselWrapper.append(ourContainer);
+  setTimeout(() => {
+    tempContainer.classList.add("our__pets_right");
+    ourContainer.classList.remove("our__pets_left");
+  }, 200);
+  ourContainer.addEventListener("transitionend", () => {
+    tempContainer.remove();
+    buttonLeft.addEventListener("click", goLeft);
+    buttonRight.addEventListener("click", goRight);
+  });
+
+  // start();
 };
 
 start();

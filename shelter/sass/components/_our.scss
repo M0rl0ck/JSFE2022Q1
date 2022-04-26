@@ -55,12 +55,33 @@
   }
 }
 
+.our__pets__wrapper {
+  width: 100%;
+  height: 435px;
+  position: relative;
+  overflow-x: hidden;
+}
+
 .our__pets {
   width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-around;
   padding-left: 8px;
   padding-right: 7px;
+  @include transit;
+  &_left {
+    top: 0;
+    left: -100%;
+    @include transit;
+  }
+  &_right {
+    top: 0;
+    left: +100%;
+    @include transit;
+  }
   @include media-max-tablet() {
     justify-content: center;
     gap: 40px;
