@@ -52,7 +52,7 @@ const start = () => {
     .forEach((item) => item.addEventListener("click", openModal));
 };
 
-const goLeft = () => {
+const goRight = () => {
   buttonLeft.removeEventListener("click", goLeft);
   buttonRight.removeEventListener("click", goRight);
   let tempContainer = document.querySelector(".our__pets");
@@ -74,11 +74,10 @@ const goLeft = () => {
     tempContainer.remove();
     buttonLeft.addEventListener("click", goLeft);
     buttonRight.addEventListener("click", goRight);
+    start();
   });
-
-  // start();
 };
-const goRight = () => {
+const goLeft = () => {
   buttonLeft.removeEventListener("click", goLeft);
   buttonRight.removeEventListener("click", goRight);
   let tempContainer = document.querySelector(".our__pets");
@@ -101,9 +100,8 @@ const goRight = () => {
     tempContainer.remove();
     buttonLeft.addEventListener("click", goLeft);
     buttonRight.addEventListener("click", goRight);
+    start();
   });
-
-  // start();
 };
 
 start();
