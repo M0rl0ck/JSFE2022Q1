@@ -11,7 +11,7 @@ type articles = {
   publishedAt: string;
   content: string
 }
-export interface INews {
+interface INews {
   status: string;
   totalResults: number;
   articles: articles[];
@@ -26,7 +26,9 @@ category: string;
 language: string;
 country: string;
 }
-export interface ISource {
+interface ISource {
   status: string;
   sources: sources[];
 }
+
+export {articles, INews, ISource, sources}
