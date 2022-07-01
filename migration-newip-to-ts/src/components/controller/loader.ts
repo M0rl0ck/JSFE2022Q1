@@ -6,7 +6,7 @@ interface ILoader {
   options: options;
 }
 
-type resArg = { endpoint: string; options: options };
+type resArg = { endpoint: string; options?: options };
 
 class Loader implements ILoader {
   baseLink: string;
