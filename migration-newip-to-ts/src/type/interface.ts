@@ -31,4 +31,6 @@ interface ISource {
   sources: sources[];
 }
 
-export {articles, INews, ISource, sources}
+type html = HTMLElement | null
+
+export {articles, INews, ISource, sources, html}
