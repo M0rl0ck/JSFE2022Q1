@@ -1,7 +1,12 @@
+enum stat {
+  ok = 'ok',
+  console = 'error',
+}
+
 type articles = {
   source: {
     id: string;
-    name: string
+    name: string;
   };
   author: string;
   title: string;
@@ -9,28 +14,28 @@ type articles = {
   url: string;
   urlToImage: string;
   publishedAt: string;
-  content: string
-}
+  content: string;
+};
 interface INews {
-  status: string;
+  status: stat;
   totalResults: number;
   articles: articles[];
 }
 
 type sources = {
-id: string;
-name: string;
-description: string;
-url: string;
-category: string;
-language: string;
-country: string;
-}
+  id: string;
+  name: string;
+  description: string;
+  url: string;
+  category: string;
+  language: string;
+  country: string;
+};
 interface ISource {
-  status: string;
+  status: stat;
   sources: sources[];
 }
 
-type html = HTMLElement | null
+type html = HTMLElement | null;
 
-export {articles, INews, ISource, sources, html}
+export { articles, INews, ISource, sources, html };
