@@ -16,9 +16,9 @@ class Loader implements ILoader {
     this.options = options;
   }
 
-  getResp(
+  getResp<T>(
     { endpoint, options = {} }: resArg,
-    callback = () => {
+    callback: (data: T) => void = () => {
       console.error('No callback for GET response');
     }
   ) {
@@ -46,7 +46,7 @@ class Loader implements ILoader {
     return url.slice(0, -1);
   }
 
-  load(method: string, endpoint: string, callback: <T>(data?: T) => void, options = {}) {
+  load<T>(method: string, endpoint: string, callback: (data: T) => void, options = {}) {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
