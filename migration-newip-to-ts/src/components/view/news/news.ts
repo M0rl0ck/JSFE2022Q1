@@ -20,7 +20,7 @@ class News {
       
       const newsMetaPhoto: html = newsClone.querySelector('.news__meta-photo');
       if (newsMetaPhoto) {
-        newsMetaPhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+        newsMetaPhoto.style.backgroundImage = `url(${item.urlToImage || 'assets/news_placeholder.jpg'})`;
       } else throw new Error('not find Element');
       
       const newsMetaAuthor = newsClone.querySelector('.news__meta-author');
