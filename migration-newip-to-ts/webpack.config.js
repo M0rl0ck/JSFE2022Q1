@@ -10,6 +10,11 @@ const baseConfig = {
     module: {
         rules: [
             {
+                test: /\.html$/,
+                use: 'html-loader'
+            },
+
+            {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
@@ -17,6 +22,11 @@ const baseConfig = {
             {
                 test: /\.ts$/i,
                 use: 'ts-loader',
+            },
+
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
             },
         ],
     },
@@ -26,6 +36,7 @@ const baseConfig = {
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, './dist'),
+        assetModuleFilename: './assets/[name][ext]'
     },
     plugins: [
         new HtmlWebpackPlugin({
