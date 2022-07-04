@@ -4,10 +4,7 @@ enum stat {
 }
 
 type articles = {
-  source: {
-    id: string;
-    name: string;
-  };
+  source: Pick<sources, 'id' | 'name'>;
   author: string;
   title: string;
   description: string;
