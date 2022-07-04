@@ -9,7 +9,7 @@
   row-gap: 30px;
   padding-top: 80px;
   padding-bottom: 80px;
-  @include media-max-tablet($max-tablet-with) {
+  @include media-max-tablet() {
     flex-direction: column-reverse;
     align-items: center;
     padding-top: 81px;
