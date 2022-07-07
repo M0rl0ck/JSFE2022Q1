@@ -1,12 +1,6 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import { INews, ISource, err } from '../../type/interface';
-
-interface IApp {
-  controller: AppController;
-  view: AppView;
-  start(): void;
-}
+import { INews, ISource, IApp , err } from '../../type/interface';
 
 class App implements IApp {
   controller: AppController;

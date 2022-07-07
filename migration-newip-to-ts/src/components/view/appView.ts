@@ -1,11 +1,7 @@
 import News from './news/news';
 import Sources from './sources/sources';
-import { articles, INews, ISource, sources } from '../../type/interface';
+import { articles, INews, ISource, IAppView, sources } from '../../type/interface';
 
-interface IAppView {
-  news: News;
-  sources: Sources;
-}
 
 export class AppView implements IAppView {
   news: News;

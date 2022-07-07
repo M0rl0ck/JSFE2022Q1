@@ -1,4 +1,5 @@
-type options = { apiKey: string } | { sources: string } | object;
+import { ILoader, options, err } from '../../type/interface';
+
 type urlOptions = { [prop: string]: string };
 
 enum errorServer {
@@ -6,10 +7,6 @@ enum errorServer {
   notFound = 404,
 }
 
-interface ILoader {
-  baseLink: string;
-  options: options;
-}
 
 type resArg = { endpoint: string; options?: options };
 
@@ -24,7 +21,7 @@ class Loader implements ILoader {
   public getResp<T>(
     { endpoint, options = {} }: resArg,
     callback: (data: T) => void = () => {
-      console.error('No callback for GET response');
+      console.error(err.noCallback);
     }
   ): void {
     this.load<T>('GET', endpoint, callback, options);

@@ -1,8 +1,14 @@
+import AppController from '../components/controller/controller';
+import { AppView } from '../components/view/appView';
+import News from '../components/view/news/news';
+import Sources from '../components/view/sources/sources';
+
 type stat = 'ok' | 'error';
 
 enum err {
   notAttribut = 'not find Attribute',
   notEllement = 'not find Element',
+  noCallback = 'No callback for GET response',
 }
 
 type articles = {
@@ -37,4 +43,22 @@ interface ISource {
 
 type html = HTMLElement | null;
 
-export { articles, INews, ISource, sources, err, html };
+interface IApp {
+  controller: AppController;
+  view: AppView;
+  start(): void;
+}
+
+type options = { apiKey: string } | { sources: string } | object;
+
+interface ILoader {
+  baseLink: string;
+  options: options;
+}
+
+interface IAppView {
+  news: News;
+  sources: Sources;
+}
+
+export { articles, INews, ISource, IApp, ILoader, IAppView, sources, options, err, html };
