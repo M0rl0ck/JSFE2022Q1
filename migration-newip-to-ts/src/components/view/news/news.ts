@@ -1,9 +1,11 @@
 import './news.css';
 import { articles, html } from '../../../type/interface';
 
+const MAX_NEW_SHOW = 10;
+
 class News {
   draw(data: articles[]) {
-    const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+    const news = data.length >= MAX_NEW_SHOW ? data.filter((_item, idx) => idx < MAX_NEW_SHOW) : data;
 
     const fragment = document.createDocumentFragment();
     const newsItemTemp: HTMLTemplateElement | null = document.querySelector('#newsItemTemp');

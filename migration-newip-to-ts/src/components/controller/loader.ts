@@ -1,6 +1,11 @@
 type options = { apiKey: string } | { sources: string } | object;
 type urlOptions = { [prop: string]: string };
 
+enum errorServer {
+  authentication = 401,
+  notFound = 404,
+}
+
 interface ILoader {
   baseLink: string;
   options: options;
@@ -27,7 +32,7 @@ class Loader implements ILoader {
 
   errorHandler(res: Response) {
     if (!res.ok) {
-      if (res.status === 401 || res.status === 404)
+      if (res.status === errorServer.authentication || res.status === errorServer.notFound)
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
       throw Error(res.statusText);
     }
