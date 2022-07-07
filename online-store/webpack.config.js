@@ -2,10 +2,23 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const EslintPlugin = require('eslint-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+// const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
+const devServer = (isDev) => (!isDev ? {} : {
+  devServer: {
+    open: true,
+    hot: true,
+    port: 8080,
+    // contentBase: path.join(__dirname, 'img'),
+  },
+});
+
+const esLintPlugin = (isDev) => (isDev ? [] : [new EslintPlugin({ extensions: ['ts', 'js'] })]);
+
+module.exports = ({ develop }) => ({
+  mode: develop ? 'development' : 'production',
+  devtool: develop ? 'inline-source-map' : false,
   entry: ['./src/index.ts', './src/scss/style.scss'],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -37,6 +50,13 @@ module.exports = {
         ],
       },
 
+      {
+        test: /\.сss$/i,
+        use: [
+          MiniCssExtractPlugin.loader, 'css-loader',
+        ],
+      },
+
     ],
   },
   resolve: {
@@ -49,12 +69,13 @@ module.exports = {
       filename: 'index.html',
     }),
     new CleanWebpackPlugin(),
-    new EslintPlugin({ extensions: 'ts' }),
-    new CopyPlugin({
-      patterns: [{ from: './img', to: './assets' }],
-    }),
+    // new CopyPlugin({
+    //   patterns: [{ from: './img', to: './assets' }],
+    // }),
     new MiniCssExtractPlugin({
-        filename: 'style.css',
-      }),
+      filename: 'style.css',
+    }),
+    ...esLintPlugin(develop),
   ],
-};
+  ...devServer(develop),
+});
