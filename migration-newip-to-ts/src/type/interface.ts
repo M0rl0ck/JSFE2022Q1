@@ -1,6 +1,8 @@
-enum stat {
-  ok = 'ok',
-  console = 'error',
+type stat = 'ok' | 'error';
+
+enum err {
+  notAttribut = 'not find Attribute',
+  notEllement = 'not find Element',
 }
 
 type articles = {
@@ -35,4 +37,4 @@ interface ISource {
 
 type html = HTMLElement | null;
 
-export { articles, INews, ISource, sources, html };
+export { articles, INews, ISource, sources, err, html };

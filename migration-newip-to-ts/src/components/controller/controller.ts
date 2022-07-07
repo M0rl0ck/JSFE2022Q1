@@ -1,9 +1,9 @@
 import AppLoader from './appLoader';
-import { INews, ISource } from '../../type/interface';
+import { INews, ISource, err } from '../../type/interface';
 
 class AppController extends AppLoader {
-    getSources(callback: (data: ISource) => void) {
-        super.getResp(
+    public getSources(callback: (data: ISource) => void) {
+        super.getResp<ISource>(
             {
                 endpoint: 'sources',
             },
@@ -11,17 +11,17 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: (data: INews) => void) {
+    public getNews(e: Event, callback: (data: INews) => void) {
         let target: HTMLElement = e.target as HTMLElement;
         const newsContainer: HTMLElement = e.currentTarget as HTMLElement;
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
                 const sourceId = target.getAttribute('data-source-id');
-                if (!sourceId) throw new Error('not find Attribute');
+                if (!sourceId) throw new Error(err.notAttribut);
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
-                    super.getResp(
+                    super.getResp<INews>(
                         {
                             endpoint: 'everything',
                             options: {

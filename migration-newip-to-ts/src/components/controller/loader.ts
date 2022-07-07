@@ -21,16 +21,16 @@ class Loader implements ILoader {
     this.options = options;
   }
 
-  getResp<T>(
+  public getResp<T>(
     { endpoint, options = {} }: resArg,
     callback: (data: T) => void = () => {
       console.error('No callback for GET response');
     }
-  ) {
-    this.load('GET', endpoint, callback, options);
+  ): void {
+    this.load<T>('GET', endpoint, callback, options);
   }
 
-  errorHandler(res: Response) {
+  private errorHandler(res: Response): Response {
     if (!res.ok) {
       if (res.status === errorServer.authentication || res.status === errorServer.notFound)
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -40,7 +40,7 @@ class Loader implements ILoader {
     return res;
   }
 
-  makeUrl(options: options, endpoint: string) {
+  private makeUrl(options: options, endpoint: string): string {
     const urlOptions: urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
@@ -51,12 +51,12 @@ class Loader implements ILoader {
     return url.slice(0, -1);
   }
 
-  load<T>(method: string, endpoint: string, callback: (data: T) => void, options = {}) {
+  private load<T>(method: string, endpoint: string, callback: (data: T) => void, options: options = {}): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
-      .then((res) => res.json())
-      .then((data) => callback(data))
-      .catch((err) => console.error(err));
+      .then((res: Response): Promise<T> => res.json())
+      .then((data: T): void => callback(data))
+      .catch((err: Error): void => console.error(err));
   }
 }
 
