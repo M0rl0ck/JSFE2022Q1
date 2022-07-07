@@ -12,7 +12,9 @@ class App implements IApp {
 
   public start(): void {
     const source = document.querySelector('.sources');
-    if (!source) throw new Error(err.notEllement);
+    if (!source) {
+      throw new Error(err.notEllement);
+    }
     source.addEventListener('click', (e: Event): void => this.controller.getNews(e, (data: INews): void => this.view.drawNews(data)));
     this.controller.getSources((data: ISource): void => this.view.drawSources(data));
   }

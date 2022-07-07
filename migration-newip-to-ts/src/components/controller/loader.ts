@@ -30,7 +30,9 @@ class Loader implements ILoader {
   private errorHandler(res: Response): Response {
     if (!res.ok) {
       if (res.status === errorServer.authentication || res.status === errorServer.notFound)
-        console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
+        {
+          console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
+      }
       throw Error(res.statusText);
     }
 
