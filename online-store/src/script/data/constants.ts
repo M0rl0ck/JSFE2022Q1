@@ -23,3 +23,5 @@ const DATACARDS: cardsData[] = [
       false
     ],
 ]
+
+export { DATACARDS };
