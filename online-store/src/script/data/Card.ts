@@ -1,4 +1,4 @@
-type colorType = 'белый' | 'черный' | 'серебристый' | 'красный';
+import { colorType } from '../type/types';
 
 export default class Card {
   private name: string;
@@ -77,7 +77,7 @@ export default class Card {
     props.append(color);
 
     const size = document.createElement('li');
-    size.innerHTML = `Размер экрана: ${this.size}`;
+    size.innerHTML = `Размер экрана: ${this.size}"`;
     props.append(size);
 
     const hot = document.createElement('li');
@@ -98,7 +98,7 @@ export default class Card {
     return element;
   }
 
-  public favotite() {
+  public favotite(): void {
     this.isFavorit = !this.isFavorit;
     if (this.trash) {
       this.trash.classList.toggle('card__trash_favorites');
