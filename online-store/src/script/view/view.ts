@@ -25,7 +25,7 @@ export default class View {
     });
   }
 
-  public showTrush(value: string) {
+  public showTrash(value: string) {
     this.amauntTrash.innerHTML = value;
   }
 

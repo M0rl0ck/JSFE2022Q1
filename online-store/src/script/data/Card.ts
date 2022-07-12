@@ -78,6 +78,7 @@ export default class Card {
 
   public favotite(): void {
     this.isFavorit = !this.isFavorit;
+    console.log(this.isFavorit);
     if (this.trash) {
       this.trash.classList.toggle("card__trash_favorites");
     }
