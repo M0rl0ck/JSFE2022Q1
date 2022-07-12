@@ -15,6 +15,7 @@ export default class App {
 
   public start() {
     this.cards = this.data.cards;
-    this.view.init(this.cards);
+    this.view.init();
+    this.view.showCards(this.cards);
   }
 }
