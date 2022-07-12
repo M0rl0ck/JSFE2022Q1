@@ -1,36 +1,20 @@
 import { colorType } from "../type/types";
 
 export default class Card {
-  name: string;
-  img: string;
-  amount: number;
-  year: number;
-  manufacturer: string;
-  color: colorType;
-  size: number;
-  hot: boolean;
   isFavorit: boolean;
   trash: HTMLDivElement;
   element: HTMLElement;
 
   constructor(
-    name: string,
-    img: string,
-    amount: number,
-    year: number,
-    manufacturer: string,
-    color: colorType,
-    size: number,
-    hot: boolean
+    private name: string,
+    private img: string,
+    private amount: number,
+    private year: number,
+    private manufacturer: string,
+    private color: colorType,
+    private size: number,
+    private hot: boolean
   ) {
-    this.name = name;
-    this.img = img;
-    this.amount = amount;
-    this.year = year;
-    this.manufacturer = manufacturer;
-    this.color = color;
-    this.size = size;
-    this.hot = hot;
     this.isFavorit = false;
     this.trash = this.createTrash();
     this.element = this.createEl();
