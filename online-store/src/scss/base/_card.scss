@@ -1,0 +1,11 @@
+.card {
+  width: 250px;
+}
+
+.card__img-container {
+  width: 100%;
+  height: auto;
+  .card__img {
+    width: 100%;
+  }
+}

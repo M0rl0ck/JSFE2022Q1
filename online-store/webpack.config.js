@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const EslintPlugin = require('eslint-webpack-plugin');
-// const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const devServer = (isDev) => (!isDev ? {} : {
@@ -10,7 +10,9 @@ const devServer = (isDev) => (!isDev ? {} : {
     open: true,
     hot: true,
     port: 8080,
-    // contentBase: path.join(__dirname, 'img'),
+    static: {
+      directory: path.join(__dirname, 'img'),
+    },
   },
 });
 
@@ -39,7 +41,7 @@ module.exports = ({ develop }) => ({
       },
 
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
         type: 'asset/resource',
       },
 
@@ -69,9 +71,9 @@ module.exports = ({ develop }) => ({
       filename: 'index.html',
     }),
     new CleanWebpackPlugin(),
-    // new CopyPlugin({
-    //   patterns: [{ from: './img', to: './assets' }],
-    // }),
+    new CopyPlugin({
+      patterns: [{ from: './img', to: './assets' }],
+    }),
     new MiniCssExtractPlugin({
       filename: 'style.css',
     }),
