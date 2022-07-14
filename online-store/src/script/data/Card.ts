@@ -1,4 +1,4 @@
-import { colorType } from "../type/types";
+import { colorType, manufacturers } from "../type/types";
 
 export default class Card {
   isFavorit: boolean;
@@ -10,7 +10,7 @@ export default class Card {
     private img: string,
     private amount: number,
     private year: number,
-    private manufacturer: string,
+    private manufacturer: manufacturers,
     private color: colorType,
     private size: number,
     private hot: boolean

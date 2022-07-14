@@ -29,6 +29,10 @@ export default class View {
     this.amauntTrash.innerHTML = value;
   }
 
+  public showFilter(value: HTMLElement): void {
+    this.main.prepend(value);
+  }
+
   private createHeader(): HTMLElement {
     const element = document.createElement("header");
     element.className = "header";

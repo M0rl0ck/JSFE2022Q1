@@ -2,21 +2,25 @@ import { DATACARDS } from "../data/constants";
 import Data from "../data/data";
 import View from "../view/view";
 import Card from "../data/Card";
+import FilterData from "../data/FilterData";
 
 export default class App {
   data: Data;
   view: View;
+  filter: FilterData;
   cards: Card[] = [];
   amoundTrash = 0;
 
   constructor() {
     this.data = new Data(DATACARDS);
     this.view = new View();
+    this.filter = new FilterData;
   }
 
   public start() {
     this.cards = [...this.data.cards];
     this.view.init();
+    this.view.showFilter(this.filter.filterElement);
     this.view.showCards(this.cards);
     this.data.cards.map((item) => {
       item.element.onclick = () => {

@@ -1,5 +1,9 @@
-type colorType = 'белый' | 'черный' | 'серый' | 'красный';
+import { MANUFACTURERS, COLORS } from '../data/constants';
 
-type cardsData = [string, string, number, number, string, colorType, number, boolean]
+type manufacturers = typeof MANUFACTURERS[number];
 
-export { colorType, cardsData };
+type colorType = typeof COLORS[number];
+
+type cardsData = [string, string, number, number, manufacturers, colorType, number, boolean];
+
+export { colorType, cardsData, manufacturers };

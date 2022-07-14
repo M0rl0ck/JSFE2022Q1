@@ -1,13 +1,17 @@
-import { cardsData } from '../type/types';
+import { cardsData } from "../type/types";
+
+const MANUFACTURERS = ['lenovo', 'hp', 'dell', 'msi'] as const;
+
+const COLORS = ['black', 'white', 'red', 'grey'] as const;
 
 const DATACARDS: cardsData[] = [
     [
-      'Lg new',
+      'Dell new',
       './assets/sss.webp',
       8,
       2022,
-      'Lg',
-      'красный',
+      'dell',
+      'red',
       16,
       false
     ],
@@ -17,19 +21,19 @@ const DATACARDS: cardsData[] = [
       './assets/sss.webp',
       13,
       2018,
-      'Производитель',
-      'черный',
+      'hp',
+      'black',
       15,
       false
     ],
 
     [
-      'Lg old',
+      'Dell old',
       './assets/sss.webp',
       10,
       2019,
-      'Lg',
-      'белый',
+      'dell',
+      'white',
       14,
       false
     ],
@@ -39,8 +43,8 @@ const DATACARDS: cardsData[] = [
       './assets/sss.webp',
       6,
       2021,
-      'Hp',
-      'серый',
+      'hp',
+      'grey',
       17,
       false
     ],
@@ -49,11 +53,11 @@ const DATACARDS: cardsData[] = [
       './assets/sss.webp',
       15,
       2020,
-      'Lenovo',
-      'красный',
+      'lenovo',
+      'red',
       16,
       false
     ],
 ]
 
-export { DATACARDS };
+export { DATACARDS, MANUFACTURERS, COLORS };
