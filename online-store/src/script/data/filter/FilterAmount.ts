@@ -9,7 +9,7 @@ constructor() {
 }
 private createEl(): HTMLElement {
 const element = document.createElement('div');
-element.className = 'filters';
+element.className = 'filtersAmount';
 element.append(this.filterMfrs.eiement);
 
 return element;
