@@ -9,17 +9,20 @@ export default class App {
   view: View;
   filter: FilterData;
   cards: Card[] = [];
-  amoundTrash = 0;
+  amoundTrash: number;
 
   constructor() {
+    const trash = localStorage.getItem('amoundTrash');
+    this.amoundTrash = trash ? JSON.parse(trash) : 0;
     this.data = new Data(DATACARDS);
     this.view = new View();
-    this.filter = new FilterData;
+    this.filter = new FilterData();
   }
 
   public start() {
     this.cards = [...this.data.cards];
     this.view.init();
+    this.view.showTrash(this.amoundTrash.toString());
     this.view.showFilter(this.filter.filterElement);
     this.view.showCards(this.cards);
     this.data.cards.map((item) => {
@@ -27,8 +30,10 @@ export default class App {
         item.favotite();
         if (item.isFavorit) {
           this.amoundTrash++;
+          localStorage.amoundTrash = this.amoundTrash;
         } else {
           this.amoundTrash--;
+          localStorage.amoundTrash = this.amoundTrash;
         }
         this.view.showTrash(this.amoundTrash.toString());
       };

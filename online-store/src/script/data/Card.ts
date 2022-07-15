@@ -15,7 +15,8 @@ export default class Card {
     private size: number,
     private hot: boolean
   ) {
-    this.isFavorit = false;
+    const storage = localStorage.getItem(`cards${this.name}`);
+    this.isFavorit = storage ? JSON.parse(storage) : false;
     this.trash = this.createTrash();
     this.element = this.createEl();
   }
@@ -72,12 +73,15 @@ export default class Card {
 
   private createTrash(): HTMLDivElement {
     const trash = document.createElement("div");
-    trash.className = "card__trash";
+    trash.className = this.isFavorit
+      ? "card__trash card__trash_favorites"
+      : "card__trash";
     return trash;
   }
 
   public favotite(): void {
     this.isFavorit = !this.isFavorit;
+    localStorage.setItem(`cards${this.name}`, JSON.stringify(this.isFavorit));
     if (this.trash) {
       this.trash.classList.toggle("card__trash_favorites");
     }
