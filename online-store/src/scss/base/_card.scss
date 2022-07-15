@@ -1,11 +1,37 @@
 .card {
   width: 250px;
+  border-style: solid;
+  border-color: aqua;
+  cursor: pointer;
+  li {
+    list-style: none;
+  }
 }
 
 .card__img-container {
   width: 100%;
   height: auto;
+ 
   .card__img {
     width: 100%;
+  }
+}
+
+.card__favorites {
+  display: flex;
+  justify-content: end;
+}
+
+.card__cart {
+  width: 40px;
+  height: 40px;
+  margin: 2px;
+  border-style: solid;
+  border-color: aqua;
+  background: url('../assets/korzina2.png');
+  background-size: 100%;
+  background-position: center;
+  &_favorites {
+    border-color: red;
   }
 }
