@@ -2,7 +2,7 @@ import { colorType, manufacturers } from "../type/types";
 
 export default class Card {
   isFavorit: boolean;
-  trash: HTMLDivElement;
+  cart: HTMLDivElement;
   element: HTMLElement;
 
   constructor(
@@ -15,8 +15,9 @@ export default class Card {
     private size: number,
     private hot: boolean
   ) {
-    this.isFavorit = false;
-    this.trash = this.createTrash();
+    const storage = localStorage.getItem(`card${this.name}`);
+    this.isFavorit = storage ? JSON.parse(storage) : false;
+    this.cart = this.createCart();
     this.element = this.createEl();
   }
 
@@ -64,22 +65,25 @@ export default class Card {
 
     const favorites = document.createElement("div");
     favorites.className = "card__favorites";
-    favorites.append(this.trash);
+    favorites.append(this.cart);
     element.append(favorites);
 
     return element;
   }
 
-  private createTrash(): HTMLDivElement {
-    const trash = document.createElement("div");
-    trash.className = "card__trash";
-    return trash;
+  private createCart(): HTMLDivElement {
+    const cart = document.createElement("div");
+    cart.className = this.isFavorit
+      ? "card__cart card__cart_favorites"
+      : "card__cart";
+    return cart;
   }
 
   public favotite(): void {
     this.isFavorit = !this.isFavorit;
-    if (this.trash) {
-      this.trash.classList.toggle("card__trash_favorites");
+    localStorage.setItem(`card${this.name}`, JSON.stringify(this.isFavorit));
+    if (this.cart) {
+      this.cart.classList.toggle("card__cart_favorites");
     }
   }
 }

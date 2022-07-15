@@ -3,11 +3,11 @@ import Card from "../data/Card";
 export default class View {
   header: HTMLElement;
   main: HTMLElement;
-  amauntTrash: HTMLElement;
+  amauntCart: HTMLElement;
   cardsContainer: HTMLElement;
 
   constructor() {
-    this.amauntTrash = document.createElement("span");
+    this.amauntCart = document.createElement("span");
     this.cardsContainer = this.createCardsContainer();
     this.main = this.createMain();
     this.header = this.createHeader();
@@ -25,8 +25,8 @@ export default class View {
     });
   }
 
-  public showTrash(value: string) {
-    this.amauntTrash.innerHTML = value;
+  public showCart(value: string) {
+    this.amauntCart.innerHTML = value;
   }
 
   public showFilter(value: HTMLElement): void {
@@ -40,11 +40,11 @@ export default class View {
     title.className = "title";
     title.innerHTML = "Online Store";
     element.append(title);
-    const trash = document.createElement("div");
-    trash.className = "trash";
-    this.amauntTrash.innerHTML = "0";
-    trash.append(this.amauntTrash);
-    element.append(trash);
+    const cart = document.createElement("div");
+    cart.className = "cart";
+    this.amauntCart.innerHTML = "0";
+    cart.append(this.amauntCart);
+    element.append(cart);
 
     return element;
   }

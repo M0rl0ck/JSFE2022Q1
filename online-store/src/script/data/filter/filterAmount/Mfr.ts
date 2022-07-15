@@ -2,7 +2,7 @@ export default class Mfr {
   isActive: boolean;
   element: HTMLElement;
   constructor(public name: string) {
-    const isName = localStorage[this.name];
+    const isName = localStorage.getItem(`Mfr${this.name}`);
     this.isActive = isName ? JSON.parse(isName) : false;
     this.element = this.createEl();
   }
