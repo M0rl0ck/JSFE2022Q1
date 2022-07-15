@@ -38,5 +38,12 @@ export default class App {
         this.view.showCart(this.amoundCart.toString());
       };
     });
+    this.filter.mfrs.map(item => {
+      item.element.onclick = () => {
+        item.element.classList.toggle('mfrs__button_active');
+        item.isActive = !item.isActive;
+        localStorage.setItem(`Mfr${item.name}`, JSON.stringify(item.isActive))
+      } 
+    })
   }
 }
