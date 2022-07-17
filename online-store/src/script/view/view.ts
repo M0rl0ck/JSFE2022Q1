@@ -2,24 +2,21 @@ import Card from "../data/Card";
 
 export default class View {
   header: HTMLElement;
-  main: HTMLElement;
+  contentWrapper: HTMLElement;
   amauntCart: HTMLElement;
   cardsContainer: HTMLElement;
 
   constructor() {
     this.amauntCart = document.createElement("span");
     this.cardsContainer = this.createCardsContainer();
-    this.main = this.createMain();
+    this.contentWrapper = this.createWrapper();
     this.header = this.createHeader();
-  }
-  public init(): void {
-    document.body.prepend(this.main);
-    this.main.append(this.cardsContainer);
+    this.createMain();
     document.body.prepend(this.header);
   }
 
   public showCards(data: Card[]): void {
-    this.cardsContainer.innerHTML = '';
+    this.cardsContainer.innerHTML = "";
     data.map((item) => {
       this.cardsContainer.append(item.element);
     });
@@ -30,32 +27,44 @@ export default class View {
   }
 
   public showFilter(value: HTMLElement): void {
-    this.main.prepend(value);
+    this.contentWrapper.prepend(value);
   }
 
   private createHeader(): HTMLElement {
     const element = document.createElement("header");
     element.className = "header";
+    const wraper = document.createElement("div");
+    wraper.className = "wrapper";
     const title = document.createElement("h1");
     title.className = "title";
     title.innerHTML = "Online Store";
-    element.append(title);
+    wraper.append(title);
     const cart = document.createElement("div");
     cart.className = "cart";
     this.amauntCart.innerHTML = "0";
     cart.append(this.amauntCart);
-    element.append(cart);
+    wraper.append(cart);
+    element.append(wraper);
 
     return element;
   }
-  private createMain(): HTMLElement {
+
+  private createWrapper(): HTMLElement {
+    const wraper = document.createElement("div");
+    wraper.className = "wrapper";
+    return wraper;
+  }
+
+  private createMain(): void {
     const main: HTMLElement = document.createElement("main");
     main.className = "main";
-    return main;
+    main.append(this.contentWrapper);
+    document.body.prepend(main);
+    this.contentWrapper.append(this.cardsContainer);
   }
-  private createCardsContainer():HTMLElement {
-    const element = document.createElement('section');
-    element.className = 'cards';
+  private createCardsContainer(): HTMLElement {
+    const element = document.createElement("section");
+    element.className = "cards";
     return element;
   }
 }

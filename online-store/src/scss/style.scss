@@ -1,5 +1,5 @@
 // abstract
-
+@import './abstract/constans.scss';
 
 // base
 @import './base/base';
@@ -13,3 +13,5 @@
 @import './componrnts/footer';
 @import './componrnts/main';
 @import './componrnts/cards';
+@import './componrnts/header';
+@import './componrnts/filterConteiner';

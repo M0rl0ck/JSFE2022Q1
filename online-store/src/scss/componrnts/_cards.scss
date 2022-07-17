@@ -1,6 +1,17 @@
 .cards {
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   justify-content: start;
-  gap: 5px;
+  gap: 15px;
+  @media screen and (max-width: 1380px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media screen and (max-width: 1150px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: 785px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

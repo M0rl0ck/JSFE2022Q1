@@ -1,10 +1,19 @@
 .card {
-  width: 250px;
   border-style: solid;
-  border-color: aqua;
+  border-radius: 10px;
+  border-color: $borderColor;
+  background-color: rgba($color: #1f1d1d, $alpha: 0.3);
+  font-size: 1.6rem;
   cursor: pointer;
+  .card__title {
+    padding-left: 15px;
+  }
+  ul {
+    padding-left: 15px;
+  }
   li {
     list-style: none;
+    padding-top: 4px;
   }
 }
 
@@ -27,11 +36,14 @@
   height: 40px;
   margin: 2px;
   border-style: solid;
-  border-color: aqua;
-  background: url('../assets/korzina2.png');
+  border-color: $borderColor;
+  border-radius: 10px;
+  background: url('../assets/cart.png');
   background-size: 100%;
+  background-repeat: no-repeat;
   background-position: center;
   &_favorites {
+    background-color: goldenrod;
     border-color: red;
   }
 }

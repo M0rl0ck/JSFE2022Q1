@@ -21,7 +21,6 @@ export default class App {
 
   public start() {
     this.cards = [...this.data.cards];
-    this.view.init();
     this.view.showCart(this.amoundCart.toString());
     this.view.showFilter(this.filter.filterElement);
     this.view.showCards(this.cards);
