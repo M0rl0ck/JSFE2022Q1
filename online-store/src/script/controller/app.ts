@@ -41,7 +41,7 @@ export default class App {
       item.element.onclick = () => {
         item.element.classList.toggle("mfrs__button_active");
         item.isActive = !item.isActive;
-        localStorage.setItem(`Mfr${item.name}`, JSON.stringify(item.isActive));
+        localStorage.setItem(`mfrs${item.name}`, JSON.stringify(item.isActive));
         this.cards = this.filterCards();
         this.view.showCards(this.cards);
       };

@@ -12,7 +12,7 @@ export default class Card {
     private year: number,
     public manufacturer: manufacturers,
     private color: colorType,
-    private size: number,
+    private size: string,
     private hot: boolean
   ) {
     const storage = localStorage.getItem(`card${this.name}`);

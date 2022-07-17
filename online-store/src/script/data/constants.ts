@@ -2,6 +2,8 @@ import { cardsData } from "../type/types";
 
 const MANUFACTURERS = ['lenovo', 'hp', 'dell', 'msi'] as const;
 
+const SIZES = ['14', '15', '16', '17'] as const;
+
 const COLORS = ['black', 'white', 'red', 'grey'] as const;
 
 const DATACARDS: cardsData[] = [
@@ -12,7 +14,7 @@ const DATACARDS: cardsData[] = [
       2022,
       'dell',
       'red',
-      16,
+      '16',
       false
     ],
 
@@ -23,7 +25,7 @@ const DATACARDS: cardsData[] = [
       2018,
       'hp',
       'black',
-      15,
+      '15',
       false
     ],
 
@@ -34,7 +36,7 @@ const DATACARDS: cardsData[] = [
       2019,
       'dell',
       'white',
-      14,
+      '14',
       false
     ],
 
@@ -45,7 +47,7 @@ const DATACARDS: cardsData[] = [
       2021,
       'hp',
       'grey',
-      17,
+      '17',
       false
     ],
     [
@@ -55,9 +57,9 @@ const DATACARDS: cardsData[] = [
       2020,
       'lenovo',
       'red',
-      16,
+      '16',
       false
     ],
 ]
 
-export { DATACARDS, MANUFACTURERS, COLORS };
+export { DATACARDS, MANUFACTURERS, COLORS, SIZES };

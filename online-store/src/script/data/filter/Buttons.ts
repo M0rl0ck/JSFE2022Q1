@@ -1,12 +1,11 @@
-import { MANUFACTURERS } from "../../constants";
-import Mfr from "./Mfr";
+import Button from "./Button";
 
-export default class Manufacturers {
-  mfrs: Mfr[] = [];
+export default class Buttons<T extends string> {
+  mfrs: Button[] = [];
   eiement: HTMLElement;
-  constructor() {
-    MANUFACTURERS.map((item) => {
-      const el = new Mfr(item);
+  constructor(data: readonly T[], private title:string, private myclass: string) {
+    data.map((item) => {
+      const el = new Button(item, this.myclass);
       this.mfrs.push(el);
     });
     this.eiement = this.createEl();
@@ -14,12 +13,12 @@ export default class Manufacturers {
 
   private createEl(): HTMLElement {
     const element = document.createElement('div');
-    element.className = 'manufacturer';
+    element.className = `container${this.myclass}`;
     const title = document.createElement('h3');
-    title.innerHTML = 'Производитель: ';
+    title.innerHTML = `${this.title}`;
     element.append(title);
     const container = document.createElement('div');
-    container.className = 'mfrs';
+    container.className = this.myclass;
     this.mfrs.map(item => {
       container.append(item.element);
     });

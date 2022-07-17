@@ -1,10 +1,10 @@
 import FilterAmount from "./filter/FilterAmount";
-import Mfr from "./filter/filterAmount/Mfr";
+import Button from "./filter/Button";
 
 export default class FilterData {
   filterAmount: FilterAmount;
   filterElement: HTMLElement;
-  mfrs: Mfr[];
+  mfrs: Button[];
   constructor() {
     this.filterAmount = new FilterAmount();
     this.filterElement = this.createFilterElement();

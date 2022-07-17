@@ -1,10 +1,12 @@
-import Manufacturers from "./filterAmount/Manufacturers";
+import { MANUFACTURERS } from "../constants";
+import {manufacturers} from '../../type/types';
+import Buttons from "./Buttons";
 
 export default class filterAmount {
-filterMfrs: Manufacturers;
+filterMfrs: Buttons<manufacturers>;
 element: HTMLElement;
 constructor() {
-  this.filterMfrs = new Manufacturers();
+  this.filterMfrs = new Buttons(MANUFACTURERS, 'Производиитель: ', 'mfrs');
   this.element = this.createEl();
 }
 private createEl(): HTMLElement {
