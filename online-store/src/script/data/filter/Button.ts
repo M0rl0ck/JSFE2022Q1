@@ -12,6 +12,7 @@ export default class Button {
     element.className = this.isActive
       ? `${this.myClass}__button ${this.name} ${this.myClass}__button_active`
       : `${this.myClass}__button ${this.name}`;
+      element.innerHTML = this.name;
 
       return element;
   }
