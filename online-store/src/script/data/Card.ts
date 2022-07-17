@@ -12,7 +12,7 @@ export default class Card {
     private year: number,
     public manufacturer: manufacturers,
     private color: colorType,
-    private size: string,
+    public size: string,
     private hot: boolean
   ) {
     const storage = localStorage.getItem(`card${this.name}`);
@@ -49,7 +49,7 @@ export default class Card {
     props.append(manufacturer);
 
     const color = document.createElement("li");
-    color.innerHTML = `Количество: ${this.color}`;
+    color.innerHTML = `Цвет: ${this.color}`;
     props.append(color);
 
     const size = document.createElement("li");

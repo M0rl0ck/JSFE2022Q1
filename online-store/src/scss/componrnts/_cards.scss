@@ -6,14 +6,15 @@
   grid-template-columns: repeat(5, 1fr);
   justify-content: start;
   align-items: start;
-  gap: 15px;
+  gap: 20px;
   @media screen and (max-width: 1380px) {
     grid-template-columns: repeat(4, 1fr);
   }
   @media screen and (max-width: 1150px) {
     grid-template-columns: repeat(3, 1fr);
   }
-  @media screen and (max-width: 785px) {
+  @media screen and (max-width: 800px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
   }
 }

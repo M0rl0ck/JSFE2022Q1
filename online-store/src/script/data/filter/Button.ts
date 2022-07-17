@@ -10,8 +10,8 @@ export default class Button {
   private createEl(): HTMLElement {
     const element = document.createElement("div");
     element.className = this.isActive
-      ? `${this.myClass}__button ${this.name} ${this.myClass}__button_active`
-      : `${this.myClass}__button ${this.name}`;
+      ? `button ${this.myClass}__button ${this.name} button_active`
+      : `button ${this.myClass}__button ${this.name}`;
       element.innerHTML = this.name;
 
       return element;

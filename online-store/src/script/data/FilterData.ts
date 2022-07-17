@@ -5,10 +5,12 @@ export default class FilterData {
   filterAmount: FilterAmount;
   filterElement: HTMLElement;
   mfrs: Button[];
+  sizes: Button[];
   constructor() {
     this.filterAmount = new FilterAmount();
     this.filterElement = this.createFilterElement();
-    this.mfrs = this.filterAmount.filterMfrs.mfrs;
+    this.mfrs = this.filterAmount.filterMfrs.buttons;
+    this.sizes = this.filterAmount.filterSizes.buttons;
   }
 
   private createFilterElement(): HTMLElement {
@@ -19,9 +21,9 @@ export default class FilterData {
     return element;
   }
 
-  public getFiters(): string[] {
+  public getFiters(data: Button[]): string[] {
     const result: string[] = [];
-		this.mfrs.map(item => {
+		data.map(item => {
 			if (item.isActive) {
 				result.push(item.name);
 			}

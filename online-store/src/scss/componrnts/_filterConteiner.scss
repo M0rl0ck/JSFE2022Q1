@@ -2,7 +2,13 @@
   margin-top: 20px;
 }
 
-.containermfrs {
+.filtersAmount {
+
+  border: 3px solid $borderColor;
+
+}
+
+.containerButtons {
   display: flex;
   align-items: center;
   h3 {
