@@ -12,7 +12,7 @@ export default class App {
   amoundCart: number;
 
   constructor() {
-    const storage = localStorage.getItem('amoundCart');
+    const storage = localStorage.getItem("amoundCart");
     this.amoundCart = storage ? JSON.parse(storage) : 0;
     this.data = new Data(DATACARDS);
     this.view = new View();
@@ -20,7 +20,7 @@ export default class App {
   }
 
   public start() {
-    this.cards = [...this.data.cards];
+    this.cards = this.filterCards();
     this.view.showCart(this.amoundCart.toString());
     this.view.showFilter(this.filter.filterElement);
     this.view.showCards(this.cards);
@@ -37,12 +37,27 @@ export default class App {
         this.view.showCart(this.amoundCart.toString());
       };
     });
-    this.filter.mfrs.map(item => {
+    this.filter.mfrs.map((item) => {
       item.element.onclick = () => {
-        item.element.classList.toggle('mfrs__button_active');
+        item.element.classList.toggle("mfrs__button_active");
         item.isActive = !item.isActive;
-        localStorage.setItem(`Mfr${item.name}`, JSON.stringify(item.isActive))
-      } 
-    })
+        localStorage.setItem(`Mfr${item.name}`, JSON.stringify(item.isActive));
+        this.cards = this.filterCards();
+        this.view.showCards(this.cards);
+      };
+    });
+  }
+
+  private filterCards(): Card[] {
+    const items: string[] = this.filter.getFiters();
+    if (items.length === 0) {
+      return this.data.cards;
+    }
+    const result: Card[] = this.data.cards.filter((item) => {
+      return items.some((str) => {
+        return str == item.manufacturer;
+      });
+    });
+    return result;
   }
 }

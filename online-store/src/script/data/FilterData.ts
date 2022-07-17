@@ -2,20 +2,31 @@ import FilterAmount from "./filter/FilterAmount";
 import Mfr from "./filter/filterAmount/Mfr";
 
 export default class FilterData {
-	filterAmount: FilterAmount;
-	filterElement: HTMLElement;
-	mfrs: Mfr[];
+  filterAmount: FilterAmount;
+  filterElement: HTMLElement;
+  mfrs: Mfr[];
   constructor() {
-		this.filterAmount = new FilterAmount
-		this.filterElement = this.createFilterElement();
-		this.mfrs = this.filterAmount.filterMfrs.mfrs;
+    this.filterAmount = new FilterAmount();
+    this.filterElement = this.createFilterElement();
+    this.mfrs = this.filterAmount.filterMfrs.mfrs;
   }
 
-	private createFilterElement(): HTMLElement {
-		const element = document.createElement('section');
-		element.className = 'filterConteiner';
-		element.append(this.filterAmount.element);
+  private createFilterElement(): HTMLElement {
+    const element = document.createElement("section");
+    element.className = "filterConteiner";
+    element.append(this.filterAmount.element);
 
-		return element;
-	}
+    return element;
+  }
+
+  public getFiters(): string[] {
+    const result: string[] = [];
+		this.mfrs.map(item => {
+			if (item.isActive) {
+				result.push(item.name);
+			}
+		})
+
+    return result;
+  }
 }

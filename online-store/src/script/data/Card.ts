@@ -6,11 +6,11 @@ export default class Card {
   element: HTMLElement;
 
   constructor(
-    private name: string,
+    public name: string,
     private img: string,
     private amount: number,
     private year: number,
-    private manufacturer: manufacturers,
+    public manufacturer: manufacturers,
     private color: colorType,
     private size: number,
     private hot: boolean

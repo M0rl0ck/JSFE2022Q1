@@ -5,6 +5,7 @@ export default class View {
   contentWrapper: HTMLElement;
   amauntCart: HTMLElement;
   cardsContainer: HTMLElement;
+  noData: HTMLElement;
 
   constructor() {
     this.amauntCart = document.createElement("span");
@@ -13,13 +14,18 @@ export default class View {
     this.header = this.createHeader();
     this.createMain();
     document.body.prepend(this.header);
+    this.noData = this.createNoData();
   }
 
   public showCards(data: Card[]): void {
     this.cardsContainer.innerHTML = "";
-    data.map((item) => {
-      this.cardsContainer.append(item.element);
-    });
+    if (data.length === 0) {
+      this.cardsContainer.append(this.noData);
+    } else {
+      data.map((item) => {
+        this.cardsContainer.append(item.element);
+      });
+    }
   }
 
   public showCart(value: string) {
@@ -28,6 +34,16 @@ export default class View {
 
   public showFilter(value: HTMLElement): void {
     this.contentWrapper.prepend(value);
+  }
+
+  private createNoData(): HTMLElement {
+    const nodata = document.createElement("div");
+    nodata.className = "nodata";
+    const title = document.createElement("h2");
+    title.innerHTML = "Извините, совпадений не обнаружено!";
+    nodata.append(title);
+
+    return nodata;
   }
 
   private createHeader(): HTMLElement {
