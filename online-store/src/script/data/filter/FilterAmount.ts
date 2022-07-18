@@ -17,7 +17,7 @@ constructor() {
 }
 private createEl(): HTMLElement {
 const element = document.createElement('div');
-element.className = 'filtersAmount';
+element.className = 'filterConteiner__group';
 element.append(this.filterMfrs.eiement);
 element.append(this.filterSizes.eiement);
 element.append(this.filterColors.eiement);

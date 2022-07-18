@@ -1,4 +1,5 @@
 import { colorType, manufacturers } from "../type/types";
+import { COLORSNAME } from "./constants";
 
 export default class Card {
   isFavorit: boolean;
@@ -49,7 +50,7 @@ export default class Card {
     props.append(manufacturer);
 
     const color = document.createElement("li");
-    color.innerHTML = `Цвет: ${this.color}`;
+    color.innerHTML = `Цвет: ${COLORSNAME[this.color]}`;
     props.append(color);
 
     const size = document.createElement("li");

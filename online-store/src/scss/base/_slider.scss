@@ -1,0 +1,25 @@
+.noUi-connect, .noUi-handle {
+  background: $sliderColor;
+  cursor: pointer;
+}
+
+.noUi-tooltip {
+display: none;
+}
+
+.noUi-active .noUi-tooltip {
+  display: block;
+  background: $sliderColor;
+  color: azure;
+  font-size: 1.6rem;
+}
+
+.range__amount:hover, .range__age:hover {
+  cursor: pointer;
+  .noUi-tooltip {
+    display: block;
+    background: $sliderColor;
+    color: azure;
+    font-size: 1.6rem;
+  }
+}

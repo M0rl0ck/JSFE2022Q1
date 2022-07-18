@@ -4,6 +4,7 @@ import View from "../view/view";
 import Card from "../data/Card";
 import FilterData from "../data/FilterData";
 import Button from "../data/filter/Button";
+// import * as noUiSlider from '../../../node_modules/nouislider/dist/nouislider';
 
 export default class App {
   data: Data;
@@ -11,6 +12,8 @@ export default class App {
   filter: FilterData;
   cards: Card[] = [];
   amoundCart: number;
+  rangAmount: number[];
+  rangAge: number[];
 
   constructor() {
     const storage = localStorage.getItem("amoundCart");
@@ -18,6 +21,14 @@ export default class App {
     this.data = new Data(DATACARDS);
     this.view = new View();
     this.filter = new FilterData();
+    this.rangAmount = [
+      this.filter.filterRange.minAmount,
+      this.filter.filterRange.maxAmount,
+    ];
+    this.rangAge = [
+      this.filter.filterRange.minAge,
+      this.filter.filterRange.maxAge,
+    ];
   }
 
   public start() {
@@ -46,6 +57,34 @@ export default class App {
     this.setEvent(this.filter.colors, "colors");
 
     this.setEvent(this.filter.hot, "hot");
+
+    this.filter.filterRange.sliderAmount.noUiSlider?.on(
+      "update",
+      (values: (string | number)[], handle: number): void => {
+        this.rangAmount[handle] = Number(values[handle]);
+        localStorage.setItem("rangamount", JSON.stringify(this.rangAmount));
+        this.filter.filterRange.minAmountEl.innerHTML =
+          this.rangAmount[0].toString();
+        this.filter.filterRange.maxAmountEl.innerHTML =
+          this.rangAmount[1].toString();
+        this.cards = this.filterCards();
+        this.view.showCards(this.cards);
+      }
+    );
+
+    this.filter.filterRange.sliderAge.noUiSlider?.on(
+      "update",
+      (values: (string | number)[], handle: number): void => {
+        this.rangAge[handle] = Number(values[handle]);
+        localStorage.setItem("rangage", JSON.stringify(this.rangAge));
+        this.filter.filterRange.minAgeEl.innerHTML =
+          this.rangAge[0].toString();
+        this.filter.filterRange.maxAgeEl.innerHTML =
+          this.rangAge[1].toString();
+        this.cards = this.filterCards();
+        this.view.showCards(this.cards);
+      }
+    );
   }
 
   private setEvent(data: Button[], value: string): void {
@@ -74,11 +113,21 @@ export default class App {
     result = this.filterAmount(sizes, result, "size");
     result = this.filterAmount(colors, result, "color");
     result = this.filterAmount(hot, result);
+    result = this.filterRange(this.rangAmount, result, "amount");
+    result = this.filterRange(this.rangAge, result, "year");
 
     return result;
   }
 
-  // private filterHot()
+  private filterRange(
+    rang: number[],
+    data: Card[],
+    property: keyof Card
+  ): Card[] {
+    return data.filter((item) => {
+      return rang[0] <= item[property] && item[property] <= rang[1];
+    });
+  }
 
   private filterAmount(
     filtersKey: string[],

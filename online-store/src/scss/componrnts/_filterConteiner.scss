@@ -1,18 +1,57 @@
 .filterConteiner {
   margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+  }
 }
 
-.filtersAmount {
-
+.filterConteiner__group {
+  width: 100%;
   border: 3px solid $borderColor;
-
+  border-radius: 10px;
+  background-color: rgba($color: #1f1d1d, $alpha: 0.3);
 }
 
 .containerButtons {
   display: flex;
   align-items: center;
+  padding-left: 10px;
   h3 {
     font-size: 1.6rem;
     padding-right: 10px;
   }
+  @media screen and (max-width: 1200px) {
+    padding-left: 80px;
+  }
+}
+
+.range__slider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  .range__amount,
+  .range__age {
+    flex: 1 0 auto;
+  }
+}
+
+.range {
+  padding: 10px 5px;
+  h3 {
+    font-size: 16px;
+    padding: 10px 0;
+  }
+}
+
+.rang__value {
+  font-size: 2rem;
+  width: 70px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid $sliderColor;
+  border-radius: 20px;
 }

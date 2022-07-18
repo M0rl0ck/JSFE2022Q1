@@ -5,6 +5,10 @@
   background-color: rgba($color: #1f1d1d, $alpha: 0.3);
   font-size: 1.8rem;
   cursor: pointer;
+  &:hover {
+    transition: all .4s;
+    transform: scale(1.03);
+  }
   .card__title {
     padding-left: 20px;
   }

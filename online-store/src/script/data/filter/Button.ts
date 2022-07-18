@@ -1,3 +1,4 @@
+
 export default class Button {
   isActive: boolean;
   element: HTMLElement;

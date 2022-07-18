@@ -11,13 +11,12 @@
   border-color: azure;
 }
 
+
 .buttons {
   margin: 6px 0;
   display: flex;
   gap: 4px;
   user-select: none;
-
-
 
   .button {
     margin: 1px;
@@ -30,30 +29,40 @@
     border-width: 2px;
     cursor: pointer;
     position: relative;
+    transition: all 0.4s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
 
     &_active {
       border-color: red;
     }
 
-    &.colors__button.button_active{
+    &.hot__button.button_active {
+      &.hot{
+        border-color: $borderColor;
+      }
+    }
 
-      &.black  {
+    &.colors__button.button_active {
+      &.black {
         border-color: black;
       }
-    
+
       &.white {
         border-color: azure;
       }
-    
+
       &.red {
         border-color: red;
       }
-    
+
       &.grey {
         border-color: gray;
       }
+
     }
-    
   }
 
   .lenovo {
@@ -68,7 +77,6 @@
     background-position: center;
   }
 
-  
   .msi {
     background: url("../assets/msi.jpg");
     background-size: 100%;
@@ -81,12 +89,12 @@
     background-position: center;
   }
 
-  .colors__button {
+  .colors__button, .hot__button {
     width: 30px;
     height: 30px;
 
     &.button_active::after {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       top: 5px;
@@ -100,6 +108,10 @@
     }
   }
 
+  .hot__button {
+    background-color: $borderColor;
+    color: $borderColor;
+  }
 
   .black {
     background-color: black;
