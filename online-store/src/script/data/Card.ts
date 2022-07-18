@@ -8,12 +8,12 @@ export default class Card {
   constructor(
     public name: string,
     private img: string,
-    private amount: number,
-    private year: number,
+    public amount: number,
+    public year: number,
     public manufacturer: manufacturers,
-    private color: colorType,
+    public color: colorType,
     public size: string,
-    private hot: boolean
+    public hot: boolean
   ) {
     const storage = localStorage.getItem(`card${this.name}`);
     this.isFavorit = storage ? JSON.parse(storage) : false;

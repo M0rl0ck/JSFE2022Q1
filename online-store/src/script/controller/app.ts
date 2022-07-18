@@ -42,6 +42,8 @@ export default class App {
     this.setEvent(this.filter.mfrs, 'mfrs');
     
     this.setEvent(this.filter.sizes, 'sizes');
+
+    this.setEvent(this.filter.colors, 'colors');
     
   }
 
@@ -60,20 +62,23 @@ export default class App {
   private filterCards(): Card[] {
     const mfrs: string[] = this.filter.getFiters(this.filter.mfrs);
     const sizes: string[] = this.filter.getFiters(this.filter.sizes);
+    const colors: string[] = this.filter.getFiters(this.filter.colors);
+    
     let result: Card[];
     result = this.filters(mfrs, this.data.cards, 'manufacturer');
     result = this.filters(sizes, result, 'size');
+    result = this.filters(colors, result, 'color');
     
 
     return result;
   }
 
-  private filters(filters: string[], data: Card[], property: (keyof Card)): Card[] {
-    if (filters.length === 0) {
+  private filters(filtersKey: string[], data: Card[], property: (keyof Card)): Card[] {
+    if (filtersKey.length === 0) {
       return data;
     }
     const result: Card[] = data.filter((item) => {
-      return filters.some((str) => {
+      return filtersKey.some((str) => {
         return str == item[property];
       });
     });

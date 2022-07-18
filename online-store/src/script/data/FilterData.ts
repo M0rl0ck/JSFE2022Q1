@@ -6,11 +6,13 @@ export default class FilterData {
   filterElement: HTMLElement;
   mfrs: Button[];
   sizes: Button[];
+  colors: Button[];
   constructor() {
     this.filterAmount = new FilterAmount();
     this.filterElement = this.createFilterElement();
     this.mfrs = this.filterAmount.filterMfrs.buttons;
     this.sizes = this.filterAmount.filterSizes.buttons;
+    this.colors = this.filterAmount.filterColors.buttons;
   }
 
   private createFilterElement(): HTMLElement {

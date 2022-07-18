@@ -1,38 +1,60 @@
 .mfrs__button {
-    font-size: 0;
-    border-radius: 15px;
-    border-color: $borderColor;
-  }
+  font-size: 0;
+  border-radius: 15px;
+  border-color: $borderColor;
+}
 
-  .sizes__button {
-    font-size: 2.2rem;
-    text-align: center;
-    border-radius: 50%;
-    border-color: azure;
-  }
-  
-  .buttons {
+.sizes__button {
+  font-size: 2.2rem;
+  text-align: center;
+  border-radius: 50%;
+  border-color: azure;
+}
+
+.buttons {
   margin: 6px 0;
   display: flex;
+  gap: 4px;
   user-select: none;
+
+
 
   .button {
     margin: 1px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-style: solid;
     border-width: 2px;
     cursor: pointer;
+    position: relative;
 
     &_active {
       border-color: red;
     }
-  }
 
-  
+    &.colors__button.button_active{
+
+      &.black  {
+        border-color: black;
+      }
+    
+      &.white {
+        border-color: azure;
+      }
+    
+      &.red {
+        border-color: red;
+      }
+    
+      &.grey {
+        border-color: gray;
+      }
+    }
+    
+  }
 
   .lenovo {
     background: url("../assets/lenovo.jpg");
@@ -46,6 +68,7 @@
     background-position: center;
   }
 
+  
   .msi {
     background: url("../assets/msi.jpg");
     background-size: 100%;
@@ -56,5 +79,45 @@
     background: url("../assets/dell.jpg");
     background-size: 100%;
     background-position: center;
+  }
+
+  .colors__button {
+    width: 30px;
+    height: 30px;
+
+    &.button_active::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 5px;
+      left: 8px;
+      width: 6px;
+      height: 9px;
+      border-style: solid;
+      border-width: 0 4px 4px 0;
+      border-color: chartreuse;
+      transform: rotate(45deg);
+    }
+  }
+
+
+  .black {
+    background-color: black;
+    color: black;
+  }
+
+  .white {
+    background-color: azure;
+    color: azure;
+  }
+
+  .red {
+    background-color: red;
+    color: red;
+  }
+
+  .grey {
+    background-color: gray;
+    color: gray;
   }
 }
