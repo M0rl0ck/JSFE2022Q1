@@ -7,12 +7,14 @@ export default class FilterData {
   mfrs: Button[];
   sizes: Button[];
   colors: Button[];
+  hot: Button[];
   constructor() {
     this.filterAmount = new FilterAmount();
     this.filterElement = this.createFilterElement();
     this.mfrs = this.filterAmount.filterMfrs.buttons;
     this.sizes = this.filterAmount.filterSizes.buttons;
     this.colors = this.filterAmount.filterColors.buttons;
+    this.hot = this.filterAmount.filterHot.buttons;
   }
 
   private createFilterElement(): HTMLElement {

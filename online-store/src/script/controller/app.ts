@@ -39,12 +39,13 @@ export default class App {
       };
     });
 
-    this.setEvent(this.filter.mfrs, 'mfrs');
-    
-    this.setEvent(this.filter.sizes, 'sizes');
+    this.setEvent(this.filter.mfrs, "mfrs");
 
-    this.setEvent(this.filter.colors, 'colors');
-    
+    this.setEvent(this.filter.sizes, "sizes");
+
+    this.setEvent(this.filter.colors, "colors");
+
+    this.setEvent(this.filter.hot, "hot");
   }
 
   private setEvent(data: Button[], value: string): void {
@@ -52,7 +53,10 @@ export default class App {
       item.element.onclick = () => {
         item.element.classList.toggle(`button_active`);
         item.isActive = !item.isActive;
-        localStorage.setItem(`${value}${item.name}`, JSON.stringify(item.isActive));
+        localStorage.setItem(
+          `${value}${item.name}`,
+          JSON.stringify(item.isActive)
+        );
         this.cards = this.filterCards();
         this.view.showCards(this.cards);
       };
@@ -63,23 +67,37 @@ export default class App {
     const mfrs: string[] = this.filter.getFiters(this.filter.mfrs);
     const sizes: string[] = this.filter.getFiters(this.filter.sizes);
     const colors: string[] = this.filter.getFiters(this.filter.colors);
-    
+    const hot: string[] = this.filter.getFiters(this.filter.hot);
+
     let result: Card[];
-    result = this.filters(mfrs, this.data.cards, 'manufacturer');
-    result = this.filters(sizes, result, 'size');
-    result = this.filters(colors, result, 'color');
-    
+    result = this.filterAmount(mfrs, this.data.cards, "manufacturer");
+    result = this.filterAmount(sizes, result, "size");
+    result = this.filterAmount(colors, result, "color");
+    result = this.filterAmount(hot, result);
 
     return result;
   }
 
-  private filters(filtersKey: string[], data: Card[], property: (keyof Card)): Card[] {
+  // private filterHot()
+
+  private filterAmount(
+    filtersKey: string[],
+    data: Card[],
+    property?: keyof Card
+  ): Card[] {
     if (filtersKey.length === 0) {
       return data;
     }
+
+    if (!property) {
+      const result: Card[] = data.filter((item) => {
+        return item.hot;
+      });
+      return result;
+    }
     const result: Card[] = data.filter((item) => {
       return filtersKey.some((str) => {
-        return str == item[property];
+        return str === item[property];
       });
     });
     return result;

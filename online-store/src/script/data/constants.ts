@@ -6,6 +6,8 @@ const SIZES = ['14', '15', '16', '17'] as const;
 
 const COLORS = ['black', 'white', 'red', 'grey'] as const;
 
+const HOT = ['hot'] as const;
+
 const DATACARDS: cardsData[] = [
     [
       'Dell new',
@@ -48,7 +50,7 @@ const DATACARDS: cardsData[] = [
       'hp',
       'grey',
       '17',
-      false
+      true
     ],
     [
       'Lenovo mega',
@@ -62,4 +64,4 @@ const DATACARDS: cardsData[] = [
     ],
 ]
 
-export { DATACARDS, MANUFACTURERS, COLORS, SIZES };
+export { DATACARDS, MANUFACTURERS, COLORS, SIZES, HOT };
