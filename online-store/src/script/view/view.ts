@@ -6,6 +6,7 @@ export default class View {
   amauntCart: HTMLElement;
   cardsContainer: HTMLElement;
   noData: HTMLElement;
+  noPlace: HTMLElement;
 
   constructor() {
     this.amauntCart = document.createElement("span");
@@ -14,12 +15,28 @@ export default class View {
     this.header = this.createHeader();
     this.createMain();
     document.body.prepend(this.header);
-    this.noData = this.createNoData();
+    this.noData = this.createNoData(
+      "nodata",
+      "Извините, совпадений не обнаружено!"
+    );
+    this.noPlace = this.createNoData(
+      "noplace",
+      "Извините, все слоты заполнены."
+    );
+    
+  }
+
+  public showNoPlace(): void {
+    document.body.append(this.noPlace);
+  }
+
+  public hideNoPlace(): void {
+    this.noPlace.remove();
   }
 
   public showCards(data: Card[]): void {
     this.cardsContainer.innerHTML = "";
-    if (data.length === 0) {
+    if (!data.length) {
       this.cardsContainer.append(this.noData);
     } else {
       data.map((item) => {
@@ -36,11 +53,11 @@ export default class View {
     this.contentWrapper.prepend(value);
   }
 
-  private createNoData(): HTMLElement {
+  private createNoData(myclass: string, str: string): HTMLElement {
     const nodata = document.createElement("div");
-    nodata.className = "nodata";
+    nodata.className = myclass;
     const title = document.createElement("h2");
-    title.innerHTML = "Извините, совпадений не обнаружено!";
+    title.innerHTML = str;
     nodata.append(title);
 
     return nodata;

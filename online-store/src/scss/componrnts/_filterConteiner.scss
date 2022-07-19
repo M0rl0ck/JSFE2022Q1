@@ -12,6 +12,7 @@
   border: 3px solid $borderColor;
   border-radius: 10px;
   background-color: rgba($color: #1f1d1d, $alpha: 0.3);
+  user-select: none;
 }
 
 .containerButtons {

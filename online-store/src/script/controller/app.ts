@@ -1,10 +1,9 @@
-import { DATACARDS } from "../data/constants";
+import { DATACARDS, SLIDER_VALUE, MAXPLACE } from "../data/constants";
 import Data from "../data/data";
 import View from "../view/view";
 import Card from "../data/Card";
 import FilterData from "../data/FilterData";
 import Button from "../data/filter/Button";
-// import * as noUiSlider from '../../../node_modules/nouislider/dist/nouislider';
 
 export default class App {
   data: Data;
@@ -17,7 +16,7 @@ export default class App {
 
   constructor() {
     const storage = localStorage.getItem("amoundCart");
-    this.amoundCart = storage ? JSON.parse(storage) : 0;
+    this.amoundCart = storage ? JSON.parse(storage) : 0; //..............................
     this.data = new Data(DATACARDS);
     this.view = new View();
     this.filter = new FilterData();
@@ -36,10 +35,19 @@ export default class App {
     this.view.showCart(this.amoundCart.toString());
     this.view.showFilter(this.filter.filterElement);
     this.view.showCards(this.cards);
+
+    this.view.noPlace.addEventListener("click", () => {
+      this.view.hideNoPlace();
+    });
+
     this.data.cards.map((item) => {
       item.element.onclick = () => {
-        item.favotite();
-        if (item.isFavorit) {
+        if (!item.isFavorit) {
+          if (this.amoundCart === MAXPLACE) {
+            this.view.showNoPlace();
+
+            return;
+          }
           this.amoundCart++;
           localStorage.amoundCart = this.amoundCart;
         } else {
@@ -47,6 +55,8 @@ export default class App {
           localStorage.amoundCart = this.amoundCart;
         }
         this.view.showCart(this.amoundCart.toString());
+
+        item.favotite();
       };
     });
 
@@ -64,9 +74,9 @@ export default class App {
         this.rangAmount[handle] = Number(values[handle]);
         localStorage.setItem("rangamount", JSON.stringify(this.rangAmount));
         this.filter.filterRange.minAmountEl.innerHTML =
-          this.rangAmount[0].toString();
+          this.rangAmount[SLIDER_VALUE.min].toString();
         this.filter.filterRange.maxAmountEl.innerHTML =
-          this.rangAmount[1].toString();
+          this.rangAmount[SLIDER_VALUE.max].toString();
         this.cards = this.filterCards();
         this.view.showCards(this.cards);
       }
@@ -78,9 +88,9 @@ export default class App {
         this.rangAge[handle] = Number(values[handle]);
         localStorage.setItem("rangage", JSON.stringify(this.rangAge));
         this.filter.filterRange.minAgeEl.innerHTML =
-          this.rangAge[0].toString();
+          this.rangAge[SLIDER_VALUE.min].toString();
         this.filter.filterRange.maxAgeEl.innerHTML =
-          this.rangAge[1].toString();
+          this.rangAge[SLIDER_VALUE.max].toString();
         this.cards = this.filterCards();
         this.view.showCards(this.cards);
       }
@@ -125,7 +135,10 @@ export default class App {
     property: keyof Card
   ): Card[] {
     return data.filter((item) => {
-      return rang[0] <= item[property] && item[property] <= rang[1];
+      return (
+        rang[SLIDER_VALUE.min] <= item[property] &&
+        item[property] <= rang[SLIDER_VALUE.max]
+      );
     });
   }
 
@@ -134,7 +147,7 @@ export default class App {
     data: Card[],
     property?: keyof Card
   ): Card[] {
-    if (filtersKey.length === 0) {
+    if (!filtersKey.length) {
       return data;
     }
 

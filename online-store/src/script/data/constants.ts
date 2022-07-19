@@ -13,6 +13,13 @@ enum COLORSNAME {
   grey = "серый",
 }
 
+const MAXPLACE =20;
+
+enum SLIDER_VALUE {
+  min,
+  max,
+}
+
 const HOT = ["hot"] as const;
 
 const DATACARDS: cardsData[] = [
@@ -214,4 +221,4 @@ const DATACARDS: cardsData[] = [
   ],
 ];
 
-export { DATACARDS, MANUFACTURERS, COLORS, SIZES, HOT, COLORSNAME };
+export { DATACARDS, MANUFACTURERS, COLORS, SIZES, HOT, COLORSNAME, SLIDER_VALUE, MAXPLACE };
