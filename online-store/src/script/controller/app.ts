@@ -1,4 +1,4 @@
-import { DATACARDS, SLIDER_VALUE, MAXPLACE } from "../data/constants";
+import { DATACARDS, SLIDER_VALUE, MAXPLACE, EMPTYCART } from "../data/constants";
 import Data from "../data/data";
 import View from "../view/view";
 import Card from "../data/Card";
@@ -16,7 +16,7 @@ export default class App {
 
   constructor() {
     const storage = localStorage.getItem("amoundCart");
-    this.amoundCart = storage ? JSON.parse(storage) : 0; //..............................
+    this.amoundCart = storage ? JSON.parse(storage) : EMPTYCART;
     this.data = new Data(DATACARDS);
     this.view = new View();
     this.filter = new FilterData();

@@ -23,51 +23,46 @@ export default class Card {
   }
 
   private createEl(): HTMLElement {
-    const element: HTMLElement = document.createElement("div");
-    element.className = "card";
-    const title = document.createElement("h2");
-    title.className = "card__title";
-    title.innerHTML = this.name;
-    element.append(title);
-    const containerImg = document.createElement("div");
-    containerImg.className = "card__img-container";
-    containerImg.innerHTML = ` <img class="card__img" src="${this.img}" alt="${this.name}">`;
-    element.append(containerImg);
+    const createHtmlElement = (
+      type: string,
+      newclass: string,
+      innerHTML?: string,
+      parrent?: HTMLElement
+    ): HTMLElement => {
+      const element = document.createElement(type);
+      if (newclass) {
+        element.className = newclass;
+      }
+      if (innerHTML) {
+        element.innerHTML = innerHTML;
+      }
+      if (parrent) {
+        parrent.append(element);
+      }
 
-    const props = document.createElement("ul");
-    props.className = "card__props";
+      return element;
+    };
 
-    const amound = document.createElement("li");
-    amound.innerHTML = `Количество: ${this.amount}`;
-    props.append(amound);
-
-    const year = document.createElement("li");
-    year.innerHTML = `Год выхода: ${this.year}`;
-    props.append(year);
-
-    const manufacturer = document.createElement("li");
-    manufacturer.innerHTML = `Производитель: ${this.manufacturer}`;
-    props.append(manufacturer);
-
-    const color = document.createElement("li");
-    color.innerHTML = `Цвет: ${COLORSNAME[this.color]}`;
-    props.append(color);
-
-    const size = document.createElement("li");
-    size.innerHTML = `Размер экрана: ${this.size}"`;
-    props.append(size);
-
-    const hot = document.createElement("li");
+    const element: HTMLElement = createHtmlElement("div", "card");
+    createHtmlElement("h2", "card__title", `${this.name}`, element);
+    createHtmlElement(
+      "div",
+      "card__img-container",
+      ` <img class="card__img" src="${this.img}" alt="${this.name}">`,
+      element
+    );
+    const props = createHtmlElement("ul", "card__props");
+    createHtmlElement("li", "", `Количество: ${this.amount}`, props);
+    createHtmlElement("li", "", `Год выхода: ${this.year}`, props);
+    createHtmlElement("li", "", `Производитель: ${this.manufacturer}`, props);
+    createHtmlElement("li", "", `Цвет: ${COLORSNAME[this.color]}`, props);
+    createHtmlElement("li", "", `Размер экрана: ${this.size}`, props);
     const pop: string = this.hot ? "да" : "нет";
-    hot.innerHTML = `Популярный: ${pop}`;
-    props.append(hot);
-
+    createHtmlElement("li", "", `Популярный: ${pop}`, props);
     element.append(props);
 
-    const favorites = document.createElement("div");
-    favorites.className = "card__favorites";
+    const favorites = createHtmlElement("div", "card__favorites", "", element);
     favorites.append(this.cart);
-    element.append(favorites);
 
     return element;
   }
