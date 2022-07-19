@@ -5,8 +5,14 @@
   background-color: rgba($color: #1f1d1d, $alpha: 0.3);
   font-size: 1.8rem;
   cursor: pointer;
+  @media screen and (max-width: 1588px) {
+    font-size: 1.6rem;
+  }
+  @media screen and (max-width: 828px) {
+    font-size: 1.5rem;
+  }
   &:hover {
-    transition: all .4s;
+    transition: all 0.4s;
     transform: scale(1.03);
   }
   .card__title {
@@ -23,10 +29,15 @@
 
 .card__img-container {
   width: 100%;
-  height: auto;
- 
+  height: 160px;
+  background-color: azure;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .card__img {
-    width: 100%;
+    display: block;
+    width: 159px;
+    height: auto;
   }
 }
 
@@ -42,7 +53,7 @@
   border-style: solid;
   border-color: $borderColor;
   border-radius: 10px;
-  background: url('../assets/cart.png');
+  background: url("../assets/cart.png");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
