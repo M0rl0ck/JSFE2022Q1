@@ -1,4 +1,9 @@
-import { DATACARDS, SLIDER_VALUE, MAXPLACE, EMPTYCART } from "../data/constants";
+import {
+  DATACARDS,
+  SLIDER_VALUE,
+  MAXPLACE,
+  EMPTYCART,
+} from "../data/constants";
 import Data from "../data/data";
 import View from "../view/view";
 import Card from "../data/Card";
@@ -39,34 +44,49 @@ export default class App {
     this.view.noPlace.addEventListener("click", () => {
       this.view.hideNoPlace();
     });
+//________________________________________________________________________
+    const clickCard = (e: Event): void => {
 
-    this.data.cards.map((item) => {
-      item.element.onclick = () => {
-        if (!item.isFavorit) {
-          if (this.amoundCart === MAXPLACE) {
-            this.view.showNoPlace();
+      const el = e.target as HTMLElement;
+      const card: Card | undefined = this.data.cards.find((item) => {
+        return item.element === el.closest('.card');
+      });
 
-            return;
-          }
-          this.amoundCart++;
-          localStorage.amoundCart = this.amoundCart;
-        } else {
-          this.amoundCart--;
-          localStorage.amoundCart = this.amoundCart;
+      if (!card) {
+        return;
+      }
+
+      if (!card.isFavorit) {
+        if (this.amoundCart === MAXPLACE) {
+          this.view.showNoPlace();
+          return;
         }
-        this.view.showCart(this.amoundCart.toString());
+        this.amoundCart++;
+        localStorage.amoundCart = this.amoundCart;
+      } else {
+        this.amoundCart--;
+        localStorage.amoundCart = this.amoundCart;
+      }
+      this.view.showCart(this.amoundCart.toString());
+      card.favotite();
+    };
 
-        item.favotite();
-      };
-    });
+    //____________________________________________________________
 
-    this.setEvent(this.filter.mfrs, "mfrs");
+    this.view.cardsContainer.addEventListener("click", clickCard);
 
-    this.setEvent(this.filter.sizes, "sizes");
+    const mfrsContainer: HTMLElement = this.filter.filterAmount.filterMfrs.buttonsContainer;
+    const sizesContainer: HTMLElement = this.filter.filterAmount.filterSizes.buttonsContainer;
+    const colorsContainer: HTMLElement = this.filter.filterAmount.filterColors.buttonsContainer;
+    const hotContainer: HTMLElement = this.filter.filterAmount.filterHot.buttonsContainer;
 
-    this.setEvent(this.filter.colors, "colors");
+    this.setEvent(this.filter.mfrs, "mfrs", mfrsContainer);
 
-    this.setEvent(this.filter.hot, "hot");
+    this.setEvent(this.filter.sizes, "sizes", sizesContainer);
+
+    this.setEvent(this.filter.colors, "colors", colorsContainer);
+
+    this.setEvent(this.filter.hot, "hot", hotContainer);
 
     this.filter.filterRange.sliderAmount.noUiSlider?.on(
       "update",
@@ -97,20 +117,32 @@ export default class App {
     );
   }
 
-  private setEvent(data: Button[], value: string): void {
-    data.map((item) => {
-      item.element.onclick = () => {
-        item.element.classList.toggle(`button_active`);
-        item.isActive = !item.isActive;
+  //_________________________________________________________
+
+  private setEvent(data: Button[], value: string, container: HTMLElement): void {
+ 
+      container.addEventListener('click', (e) => {
+        const el = e.target as HTMLElement;
+        const button: Button | undefined = data.find((item) => {
+          return item.element === el.closest('.button');
+        });
+        if (!button) {
+          return;
+        }
+
+         button.element.classList.toggle(`button_active`);
+        button.isActive = !button.isActive;
         localStorage.setItem(
-          `${value}${item.name}`,
-          JSON.stringify(item.isActive)
+          `${value}${button.name}`,
+          JSON.stringify(button.isActive)
         );
         this.cards = this.filterCards();
         this.view.showCards(this.cards);
-      };
-    });
+      });
+
   }
+
+  //______________________________________________________________
 
   private filterCards(): Card[] {
     const mfrs: string[] = this.filter.getFiters(this.filter.mfrs);
