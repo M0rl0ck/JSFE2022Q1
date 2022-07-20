@@ -1,4 +1,5 @@
 import * as noUiSlider from "../../../../node_modules/nouislider/dist/nouislider";
+import { createHtmlElement } from "../function";
 
 export default class FilterRange {
   element: HTMLElement;
@@ -19,8 +20,8 @@ export default class FilterRange {
     this.maxAmountEl = this.createRangValue(this.maxAmount);
     this.minAgeEl = this.createRangValue(this.minAge);
     this.maxAgeEl = this.createRangValue(this.maxAge);
-    this.sliderAmount = this.createSlider("range__amount");
-    this.sliderAge = this.createSlider("range__age");
+    this.sliderAmount = createHtmlElement("div", "range__amount");
+    this.sliderAge = createHtmlElement("div", "range__age");
     this.element = this.createEl();
 
     noUiSlider.create(this.sliderAmount, {
@@ -64,9 +65,8 @@ export default class FilterRange {
   }
 
   private createRangValue(value: number): HTMLElement {
-    const element = document.createElement('div');
-    element.className = 'rang__value';
-    element.innerHTML = value.toString();
+    const element = createHtmlElement('div', 'rang__value', value.toString())
+
     return element;
   }
 
@@ -75,35 +75,19 @@ export default class FilterRange {
     return num ? JSON.parse(num) : value;
   }
 
-  private createSlider(myclass: string): HTMLElement {
-    const element: HTMLElement = document.createElement("div");
-    element.className = myclass;
-
-    return element;
-  }
-
   private createEl(): HTMLElement {
-    const element: HTMLElement = document.createElement("div");
-    element.className = "filterConteiner__group";
-    const range1 = document.createElement("div");
-    range1.className = "range";
-    const title1 = document.createElement("h3");
-    title1.innerHTML = "Количество на складе: ";
-    const sliderContainer1 = document.createElement('div');
-    sliderContainer1.className = 'range__slider';
-    range1.append(title1, sliderContainer1);
-    sliderContainer1.append(this.minAmountEl, this.sliderAmount, this.maxAmountEl);
+    const element: HTMLElement = createHtmlElement("div", "filterConteiner__group");
+    const rangeAmount = createHtmlElement("div", "range");
+    createHtmlElement("h3", '', "Количество на складе: ", rangeAmount);
+    const sliderAmountContainer = createHtmlElement('div', 'range__slider', '', rangeAmount);
+    sliderAmountContainer.append(this.minAmountEl, this.sliderAmount, this.maxAmountEl);
 
-    const range2 = document.createElement("div");
-    range2.className = "range";
-    const title2 = document.createElement("h3");
-    title2.innerHTML = "Год выхода на рынок: ";
-    const sliderContainer2 = document.createElement('div');
-    sliderContainer2.className = 'range__slider';
-    range2.append(title2, sliderContainer2);
-    sliderContainer2.append(this.minAgeEl, this.sliderAge, this.maxAgeEl);
+    const rangeAge = createHtmlElement("div", "range");
+    createHtmlElement("h3", '',  "Год выхода на рынок: ", rangeAge)
+    const sliderAgeContainer = createHtmlElement('div', 'range__slider', '', rangeAge)
+    sliderAgeContainer.append(this.minAgeEl, this.sliderAge, this.maxAgeEl);
 
-    element.append(range1, range2);
+    element.append(rangeAmount, rangeAge);
 
     return element;
   }

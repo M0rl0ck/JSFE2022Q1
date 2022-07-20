@@ -1,10 +1,4 @@
-import {
-  DATACARDS,
-  SLIDER_VALUE,
-  MAXPLACE,
-  EMPTYCART,
-  SORT,
-} from "../data/constants";
+import { SLIDER_VALUE, MAXPLACE, EMPTYCART, SORT } from "../data/constants";
 import Data from "../data/data";
 import View from "../view/view";
 import Card from "../data/Card";
@@ -12,20 +6,18 @@ import FilterData from "../data/FilterData";
 import Button from "../data/filter/Button";
 
 export default class App {
-  data: Data;
-  view: View;
-  filter: FilterData;
   cards: Card[] = [];
   amoundCart: number;
   rangAmount: number[];
   rangAge: number[];
 
-  constructor() {
+  constructor(
+    private data: Data,
+    private view: View,
+    private filter: FilterData
+  ) {
     const storage = localStorage.getItem("amoundCart");
     this.amoundCart = storage ? JSON.parse(storage) : EMPTYCART;
-    this.data = new Data(DATACARDS);
-    this.view = new View();
-    this.filter = new FilterData();
     this.rangAmount = [
       this.filter.filterRange.minAmount,
       this.filter.filterRange.maxAmount,
@@ -47,10 +39,9 @@ export default class App {
     });
 
     const clickCard = (e: Event): void => {
-
       const el = e.target as HTMLElement;
       const card: Card | undefined = this.data.cards.find((item) => {
-        return item.element === el.closest('.card');
+        return item.element === el.closest(".card");
       });
 
       if (!card) {
@@ -72,13 +63,16 @@ export default class App {
       card.favotite();
     };
 
-
     this.view.cardsContainer.addEventListener("click", clickCard);
 
-    const mfrsContainer: HTMLElement = this.filter.filterAmount.filterMfrs.buttonsContainer;
-    const sizesContainer: HTMLElement = this.filter.filterAmount.filterSizes.buttonsContainer;
-    const colorsContainer: HTMLElement = this.filter.filterAmount.filterColors.buttonsContainer;
-    const hotContainer: HTMLElement = this.filter.filterAmount.filterHot.buttonsContainer;
+    const mfrsContainer: HTMLElement =
+      this.filter.filterAmount.filterMfrs.buttonsContainer;
+    const sizesContainer: HTMLElement =
+      this.filter.filterAmount.filterSizes.buttonsContainer;
+    const colorsContainer: HTMLElement =
+      this.filter.filterAmount.filterColors.buttonsContainer;
+    const hotContainer: HTMLElement =
+      this.filter.filterAmount.filterHot.buttonsContainer;
 
     this.setEvent(this.filter.mfrs, "mfrs", mfrsContainer);
 
@@ -87,8 +81,6 @@ export default class App {
     this.setEvent(this.filter.colors, "colors", colorsContainer);
 
     this.setEvent(this.filter.hot, "hot", hotContainer);
-
-
 
     this.filter.filterRange.sliderAmount.noUiSlider?.on(
       "update",
@@ -118,37 +110,39 @@ export default class App {
       }
     );
 
-    this.filter.filterSearch.input.addEventListener('input', () => {
+    this.filter.filterSearch.input.addEventListener("input", () => {
       this.cards = this.filterCards();
       this.view.showCards(this.cards);
     });
-    this.filter.filterSearch.sort.addEventListener('change', () => {
+    this.filter.filterSearch.sort.addEventListener("change", () => {
       this.cards = this.filterCards();
       this.view.showCards(this.cards);
-    })
+    });
   }
 
-  private setEvent(data: Button[], value: string, container: HTMLElement): void {
- 
-      container.addEventListener('click', (e) => {
-        const el = e.target as HTMLElement;
-        const button: Button | undefined = data.find((item) => {
-          return item.element === el.closest('.button');
-        });
-        if (!button) {
-          return;
-        }
-
-         button.element.classList.toggle(`button_active`);
-        button.isActive = !button.isActive;
-        localStorage.setItem(
-          `${value}${button.name}`,
-          JSON.stringify(button.isActive)
-        );
-        this.cards = this.filterCards();
-        this.view.showCards(this.cards);
+  private setEvent(
+    data: Button[],
+    value: string,
+    container: HTMLElement
+  ): void {
+    container.addEventListener("click", (e) => {
+      const el = e.target as HTMLElement;
+      const button: Button | undefined = data.find((item) => {
+        return item.element === el.closest(".button");
       });
+      if (!button) {
+        return;
+      }
 
+      button.element.classList.toggle(`button_active`);
+      button.isActive = !button.isActive;
+      localStorage.setItem(
+        `${value}${button.name}`,
+        JSON.stringify(button.isActive)
+      );
+      this.cards = this.filterCards();
+      this.view.showCards(this.cards);
+    });
   }
 
   private filterCards(): Card[] {
@@ -173,42 +167,40 @@ export default class App {
 
   private filterSort(data: Card[]): Card[] {
     const sortCards = (property: keyof Card, a: Card, b: Card): number => {
-       if (a[property] > b[property]) {
-            return 1;
-          }
-          return -1;
-    }
+      if (a[property] > b[property]) {
+        return 1;
+      }
+      return -1;
+    };
     const sort: number = this.filter.filterSearch.sort.selectedIndex;
-    switch(sort) {
+    switch (sort) {
       case SORT.name: {
-        return data.sort((a, b) => sortCards('name', a ,b));
+        return data.sort((a, b) => sortCards("name", a, b));
       }
       case SORT.namerevers: {
-        return data.sort((a, b) => -sortCards('name', a ,b));
+        return data.sort((a, b) => -sortCards("name", a, b));
       }
       case SORT.year: {
-        return data.sort((a, b) => sortCards('year', a ,b));
+        return data.sort((a, b) => sortCards("year", a, b));
       }
       case SORT.yearrevers: {
-        return data.sort((a, b) => -sortCards('year', a ,b));
+        return data.sort((a, b) => -sortCards("year", a, b));
       }
       case SORT.amount: {
-        return data.sort((a, b) => sortCards('amount', a ,b));
+        return data.sort((a, b) => sortCards("amount", a, b));
       }
       case SORT.amountrevers: {
-        return data.sort((a, b) => -sortCards('amount', a ,b));
+        return data.sort((a, b) => -sortCards("amount", a, b));
       }
     }
-
-    
 
     return data;
   }
 
   private filterSearch(filterKey: string, data: Card[]): Card[] {
-    return data.filter(item => {
+    return data.filter((item) => {
       return item.name.toLowerCase().includes(filterKey.toLowerCase());
-    })
+    });
   }
 
   private filterRange(

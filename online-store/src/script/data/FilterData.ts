@@ -4,18 +4,22 @@ import FilterSearch from "./filter/FilterSearch";
 import Button from "./filter/Button";
 
 export default class FilterData {
-  filterAmount: FilterAmount;
-  filterRange: FilterRange;
-  filterSearch: FilterSearch;
+  // filterAmount: FilterAmount;
+  // filterRange: FilterRange;
+  // filterSearch: FilterSearch;
   filterElement: HTMLElement;
   mfrs: Button[];
   sizes: Button[];
   colors: Button[];
   hot: Button[];
-  constructor() {
-    this.filterAmount = new FilterAmount();
-    this.filterRange = new FilterRange;
-    this.filterSearch = new FilterSearch;
+  constructor(
+    public filterAmount: FilterAmount,
+    public filterRange: FilterRange,
+    public filterSearch: FilterSearch
+  ) {
+    // this.filterAmount = new FilterAmount();
+    // this.filterRange = new FilterRange;
+    // this.filterSearch = new FilterSearch;
     this.filterElement = this.createFilterElement();
     this.mfrs = this.filterAmount.filterMfrs.buttons;
     this.sizes = this.filterAmount.filterSizes.buttons;
@@ -35,11 +39,11 @@ export default class FilterData {
 
   public getFiters(data: Button[]): string[] {
     const result: string[] = [];
-		data.map(item => {
-			if (item.isActive) {
-				result.push(item.name);
-			}
-		})
+    data.map((item) => {
+      if (item.isActive) {
+        result.push(item.name);
+      }
+    });
 
     return result;
   }

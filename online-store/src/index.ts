@@ -1,6 +1,20 @@
-import App from './script/controller/app';
+import App from "./script/controller/app";
+import { DATACARDS } from "./script/data/constants";
+import Data from "./script/data/data";
+import View from "./script/view/view";
+import FilterData from "./script/data/FilterData";
+import filterAmount from "./script/data/filter/FilterAmount";
+import FilterRange from "./script/data/filter/FilterRange";
+import FilterSearch from "./script/data/filter/FilterSearch";
 
-const app: App = new App;
+const data = new Data(DATACARDS);
+const view = new View();
+const filteramount = new filterAmount();
+const filterrange = new FilterRange();
+const filtersearch = new FilterSearch();
+const filter = new FilterData(filteramount, filterrange, filtersearch);
+
+const app: App = new App(data, view, filter);
 app.start();
 
 console.log(`
@@ -60,4 +74,4 @@ console.log(`
 - очень высокое качество оформления приложения + дополнительный, не указанный в задании, сложный в реализации функционал, улучшающий качество приложения, удобство пользования им +10
 
 Итого: 200/200
-`)
+`);
