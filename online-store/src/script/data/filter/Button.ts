@@ -1,9 +1,10 @@
+import { storage } from "../../../index";
 
 export default class Button {
   isActive: boolean;
   element: HTMLElement;
   constructor(public name: string, private myClass: string) {
-    const isName = localStorage.getItem(`${this.myClass}${this.name}`);
+    const isName = storage.loadValue(`${this.myClass}${this.name}`);
     this.isActive = isName ? JSON.parse(isName) : false;
     this.element = this.createEl();
   }

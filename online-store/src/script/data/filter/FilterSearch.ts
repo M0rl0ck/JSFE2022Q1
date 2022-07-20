@@ -1,4 +1,5 @@
 import { createHtmlElement } from "../function";
+import Storage from "../Storage";
 
 export default class FilterSearch {
   element: HTMLElement;
@@ -8,12 +9,12 @@ export default class FilterSearch {
   selectedIndex: number;
   resetFilter: HTMLElement;
   resetSetting: HTMLElement;
-  constructor() {
-    const value = localStorage.getItem('searchValue');
+  constructor(private storage: Storage) {
+    const value = storage.loadValue('searchValue');
     this.searchValue = value ? value : '';
     this.input = this.createImput();
 
-    const index = localStorage.getItem('selectIndex');
+    const index = storage.loadValue('selectIndex');
     this.selectedIndex = index ? Number(index) : 0;
 
     this.sort = this.cresteSelect();
@@ -30,7 +31,7 @@ export default class FilterSearch {
     element.value = this.searchValue;
     element.addEventListener('input', () => {
       this.searchValue = element.value;
-      localStorage.setItem('searchValue', element.value)
+      this.storage.saveValue('searchValue', element.value)
     });
     return element;
   }
@@ -61,20 +62,20 @@ export default class FilterSearch {
     sortContainer.append(this.sort);
     
     this.sort.addEventListener('change', () => {
-      localStorage.setItem('selectIndex', this.sort.selectedIndex.toString());
+      this.storage.saveValue('selectIndex', this.sort.selectedIndex.toString());
     });
     
     const resetContainer = createHtmlElement('div', 'resetContainer', '', element);
     resetContainer.append(this.resetFilter, this.resetSetting);
 
     this.resetFilter.addEventListener('click', () => {
-      localStorage.clear();
-      localStorage.setItem('selectIndex', this.sort.selectedIndex.toString())
+      this.storage.clear();
+      this.storage.saveValue('selectIndex', this.sort.selectedIndex.toString())
       location.reload();
     });
 
     this.resetSetting.addEventListener('click', () => {
-      localStorage.clear();
+      this.storage.clear();
       location.reload();
     });
 

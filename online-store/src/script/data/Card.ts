@@ -1,6 +1,7 @@
 import { colorType, manufacturers } from "../type/types";
 import { COLORSNAME } from "./constants";
 import { createHtmlElement } from "./function";
+import { storage } from "../../index";
 
 export default class Card {
   isFavorit: boolean;
@@ -17,8 +18,8 @@ export default class Card {
     public size: string,
     public hot: boolean
   ) {
-    const storage = localStorage.getItem(`card${this.name}`);
-    this.isFavorit = storage ? JSON.parse(storage) : false;
+    const storageFavorit = storage.loadValue(`card${this.name}`);
+    this.isFavorit = storageFavorit ? JSON.parse(storageFavorit) : false;
     this.cart = this.createCart();
     this.element = this.createEl();
   }
@@ -60,7 +61,7 @@ export default class Card {
 
   public favotite(): void {
     this.isFavorit = !this.isFavorit;
-    localStorage.setItem(`card${this.name}`, JSON.stringify(this.isFavorit));
+    storage.saveValue(`card${this.name}`, JSON.stringify(this.isFavorit));
     if (this.cart) {
       this.cart.classList.toggle("card__cart_favorites");
     }

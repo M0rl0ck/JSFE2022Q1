@@ -1,5 +1,6 @@
 import * as noUiSlider from "../../../../node_modules/nouislider/dist/nouislider";
 import { createHtmlElement } from "../function";
+import Storage from "../Storage";
 
 export default class FilterRange {
   element: HTMLElement;
@@ -13,7 +14,7 @@ export default class FilterRange {
   maxAge: number;
   minAgeEl: HTMLElement;
   maxAgeEl: HTMLElement;
-  constructor() {
+  constructor(private storag: Storage) {
     [this.minAmount, this.maxAmount] = this.getValue("rangamount", [1, 20]);
     [this.minAge, this.maxAge] = this.getValue("rangage", [2010, 2022]);
     this.minAmountEl = this.createRangValue(this.minAmount);
@@ -71,7 +72,7 @@ export default class FilterRange {
   }
 
   private getValue(name: string, value: number[]): number[] {
-    const num = localStorage.getItem(name);
+    const num = this.storag.loadValue(name);
     return num ? JSON.parse(num) : value;
   }
 

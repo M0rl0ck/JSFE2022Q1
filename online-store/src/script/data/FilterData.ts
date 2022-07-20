@@ -4,9 +4,6 @@ import FilterSearch from "./filter/FilterSearch";
 import Button from "./filter/Button";
 
 export default class FilterData {
-  // filterAmount: FilterAmount;
-  // filterRange: FilterRange;
-  // filterSearch: FilterSearch;
   filterElement: HTMLElement;
   mfrs: Button[];
   sizes: Button[];
@@ -17,9 +14,7 @@ export default class FilterData {
     public filterRange: FilterRange,
     public filterSearch: FilterSearch
   ) {
-    // this.filterAmount = new FilterAmount();
-    // this.filterRange = new FilterRange;
-    // this.filterSearch = new FilterSearch;
+
     this.filterElement = this.createFilterElement();
     this.mfrs = this.filterAmount.filterMfrs.buttons;
     this.sizes = this.filterAmount.filterSizes.buttons;
@@ -36,7 +31,6 @@ export default class FilterData {
 
     return element;
   }
-
   public getFiters(data: Button[]): string[] {
     const result: string[] = [];
     data.map((item) => {

@@ -4,6 +4,7 @@ import View from "../view/view";
 import Card from "../data/Card";
 import FilterData from "../data/FilterData";
 import Button from "../data/filter/Button";
+import Storage from "../data/Storage";
 
 export default class App {
   cards: Card[] = [];
@@ -14,10 +15,11 @@ export default class App {
   constructor(
     private data: Data,
     private view: View,
-    private filter: FilterData
+    private filter: FilterData,
+    private storage: Storage
   ) {
-    const storage = localStorage.getItem("amoundCart");
-    this.amoundCart = storage ? JSON.parse(storage) : EMPTYCART;
+    const storageAmount = this.storage.loadValue("amoundCart");
+    this.amoundCart = storageAmount ? JSON.parse(storageAmount) : EMPTYCART;
     this.rangAmount = [
       this.filter.filterRange.minAmount,
       this.filter.filterRange.maxAmount,
@@ -54,10 +56,10 @@ export default class App {
           return;
         }
         this.amoundCart++;
-        localStorage.amoundCart = this.amoundCart;
+        this.storage.saveValue('amoundCart', this.amoundCart.toString());
       } else {
         this.amoundCart--;
-        localStorage.amoundCart = this.amoundCart;
+        this.storage.saveValue('amoundCart', this.amoundCart.toString());
       }
       this.view.showCart(this.amoundCart.toString());
       card.favotite();
@@ -86,7 +88,7 @@ export default class App {
       "update",
       (values: (string | number)[], handle: number): void => {
         this.rangAmount[handle] = Number(values[handle]);
-        localStorage.setItem("rangamount", JSON.stringify(this.rangAmount));
+        this.storage.saveValue("rangamount", JSON.stringify(this.rangAmount));
         this.filter.filterRange.minAmountEl.innerHTML =
           this.rangAmount[SLIDER_VALUE.min].toString();
         this.filter.filterRange.maxAmountEl.innerHTML =
@@ -100,7 +102,7 @@ export default class App {
       "update",
       (values: (string | number)[], handle: number): void => {
         this.rangAge[handle] = Number(values[handle]);
-        localStorage.setItem("rangage", JSON.stringify(this.rangAge));
+        this.storage.saveValue("rangage", JSON.stringify(this.rangAge));
         this.filter.filterRange.minAgeEl.innerHTML =
           this.rangAge[SLIDER_VALUE.min].toString();
         this.filter.filterRange.maxAgeEl.innerHTML =
@@ -136,7 +138,7 @@ export default class App {
 
       button.element.classList.toggle(`button_active`);
       button.isActive = !button.isActive;
-      localStorage.setItem(
+      this.storage.saveValue(
         `${value}${button.name}`,
         JSON.stringify(button.isActive)
       );

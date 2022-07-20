@@ -6,16 +6,20 @@ import FilterData from "./script/data/FilterData";
 import filterAmount from "./script/data/filter/FilterAmount";
 import FilterRange from "./script/data/filter/FilterRange";
 import FilterSearch from "./script/data/filter/FilterSearch";
+import Storage from "./script/data/Storage";
 
+const storage = new Storage();
 const data = new Data(DATACARDS);
 const view = new View();
 const filteramount = new filterAmount();
-const filterrange = new FilterRange();
-const filtersearch = new FilterSearch();
+const filterrange = new FilterRange(storage);
+const filtersearch = new FilterSearch(storage);
 const filter = new FilterData(filteramount, filterrange, filtersearch);
 
-const app: App = new App(data, view, filter);
+const app: App = new App(data, view, filter, storage);
 app.start();
+
+export { storage };
 
 console.log(`
 ✔️ 1. Страница с товарами содержит карточки всех товаров а также фильтры, строку поиска, поле для сортировки. Выполняются требования к вёрстке - 10
