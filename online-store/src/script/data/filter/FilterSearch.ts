@@ -53,16 +53,15 @@ export default class FilterSearch {
   private createEl(): HTMLElement {
     const element: HTMLElement = createHtmlElement("div", 'filterConteiner__group')
     const searchContainer = createHtmlElement('div', 'searchContainer', '', element);
-    createHtmlElement('h2', '', 'Поиск', searchContainer);
+    createHtmlElement('h3', '', 'Поиск', searchContainer);
     searchContainer.append(this.input);
 
     const sortContainer = createHtmlElement('div', 'sortContainer', '', element);
-    createHtmlElement('h2', '', 'Сортировка', sortContainer);
+    createHtmlElement('h3', '', 'Сортировка', sortContainer);
     sortContainer.append(this.sort);
     
     this.sort.addEventListener('change', () => {
       localStorage.setItem('selectIndex', this.sort.selectedIndex.toString());
-      console.log(this.sort.selectedIndex);
     });
     
     const resetContainer = createHtmlElement('div', 'resetContainer', '', element);
