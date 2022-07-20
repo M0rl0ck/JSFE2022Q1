@@ -3,6 +3,7 @@ import {
   SLIDER_VALUE,
   MAXPLACE,
   EMPTYCART,
+  SORT,
 } from "../data/constants";
 import Data from "../data/data";
 import View from "../view/view";
@@ -44,7 +45,7 @@ export default class App {
     this.view.noPlace.addEventListener("click", () => {
       this.view.hideNoPlace();
     });
-//________________________________________________________________________
+
     const clickCard = (e: Event): void => {
 
       const el = e.target as HTMLElement;
@@ -71,7 +72,6 @@ export default class App {
       card.favotite();
     };
 
-    //____________________________________________________________
 
     this.view.cardsContainer.addEventListener("click", clickCard);
 
@@ -87,6 +87,8 @@ export default class App {
     this.setEvent(this.filter.colors, "colors", colorsContainer);
 
     this.setEvent(this.filter.hot, "hot", hotContainer);
+
+
 
     this.filter.filterRange.sliderAmount.noUiSlider?.on(
       "update",
@@ -115,9 +117,16 @@ export default class App {
         this.view.showCards(this.cards);
       }
     );
-  }
 
-  //_________________________________________________________
+    this.filter.filterSearch.input.addEventListener('input', () => {
+      this.cards = this.filterCards();
+      this.view.showCards(this.cards);
+    });
+    this.filter.filterSearch.sort.addEventListener('change', () => {
+      this.cards = this.filterCards();
+      this.view.showCards(this.cards);
+    })
+  }
 
   private setEvent(data: Button[], value: string, container: HTMLElement): void {
  
@@ -142,13 +151,12 @@ export default class App {
 
   }
 
-  //______________________________________________________________
-
   private filterCards(): Card[] {
     const mfrs: string[] = this.filter.getFiters(this.filter.mfrs);
     const sizes: string[] = this.filter.getFiters(this.filter.sizes);
     const colors: string[] = this.filter.getFiters(this.filter.colors);
     const hot: string[] = this.filter.getFiters(this.filter.hot);
+    const search: string = this.filter.filterSearch.searchValue;
 
     let result: Card[];
     result = this.filterAmount(mfrs, this.data.cards, "manufacturer");
@@ -157,8 +165,50 @@ export default class App {
     result = this.filterAmount(hot, result);
     result = this.filterRange(this.rangAmount, result, "amount");
     result = this.filterRange(this.rangAge, result, "year");
+    result = this.filterSearch(search, result);
+    result = this.filterSort(result);
 
     return result;
+  }
+
+  private filterSort(data: Card[]): Card[] {
+    const sortCards = (property: keyof Card, a: Card, b: Card): number => {
+       if (a[property] > b[property]) {
+            return 1;
+          }
+          return -1;
+    }
+    const sort: number = this.filter.filterSearch.sort.selectedIndex;
+    switch(sort) {
+      case SORT.name: {
+        return data.sort((a, b) => sortCards('name', a ,b));
+      }
+      case SORT.namerevers: {
+        return data.sort((a, b) => -sortCards('name', a ,b));
+      }
+      case SORT.year: {
+        return data.sort((a, b) => sortCards('year', a ,b));
+      }
+      case SORT.yearrevers: {
+        return data.sort((a, b) => -sortCards('year', a ,b));
+      }
+      case SORT.amount: {
+        return data.sort((a, b) => sortCards('amount', a ,b));
+      }
+      case SORT.amountrevers: {
+        return data.sort((a, b) => -sortCards('amount', a ,b));
+      }
+    }
+
+    
+
+    return data;
+  }
+
+  private filterSearch(filterKey: string, data: Card[]): Card[] {
+    return data.filter(item => {
+      return item.name.toLowerCase().includes(filterKey.toLowerCase());
+    })
   }
 
   private filterRange(

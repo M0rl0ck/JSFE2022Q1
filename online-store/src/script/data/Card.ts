@@ -1,5 +1,6 @@
 import { colorType, manufacturers } from "../type/types";
 import { COLORSNAME } from "./constants";
+import { createHtmlElement } from "./function";
 
 export default class Card {
   isFavorit: boolean;
@@ -23,25 +24,7 @@ export default class Card {
   }
 
   private createEl(): HTMLElement {
-    const createHtmlElement = (
-      type: string,
-      newclass: string,
-      innerHTML?: string,
-      parrent?: HTMLElement
-    ): HTMLElement => {
-      const element = document.createElement(type);
-      if (newclass) {
-        element.className = newclass;
-      }
-      if (innerHTML) {
-        element.innerHTML = innerHTML;
-      }
-      if (parrent) {
-        parrent.append(element);
-      }
-
-      return element;
-    };
+    
 
     const element: HTMLElement = createHtmlElement("div", "card");
     createHtmlElement("h2", "card__title", `${this.name}`, element);

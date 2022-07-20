@@ -22,6 +22,15 @@ enum SLIDER_VALUE {
   max,
 }
 
+enum SORT {
+  name,
+  namerevers,
+  year,
+  yearrevers,
+  amount,
+  amountrevers,
+}
+
 const HOT = ["hot"] as const;
 
 const DATACARDS: cardsData[] = [
@@ -223,4 +232,4 @@ const DATACARDS: cardsData[] = [
   ],
 ];
 
-export { DATACARDS, MANUFACTURERS, COLORS, SIZES, HOT, COLORSNAME, SLIDER_VALUE, MAXPLACE, EMPTYCART };
+export { DATACARDS, MANUFACTURERS, COLORS, SIZES, HOT, COLORSNAME, SLIDER_VALUE, MAXPLACE, EMPTYCART, SORT };
