@@ -1,0 +1,21 @@
+// abstract
+@import './abstract/constans.scss';
+
+// base
+@import './base/base';
+@import './base/card';
+@import './base/buttons';
+@import 'nouislider/dist/nouislider.css';
+@import './base/slider';
+@import './base/noplase';
+
+// layout
+@import './layout/wrapper';
+
+// components
+@import './componrnts/footer';
+@import './componrnts/main';
+@import './componrnts/cards';
+@import './componrnts/header';
+@import './componrnts/filterConteiner';
+@import './componrnts/noData';
