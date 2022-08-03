@@ -6,8 +6,8 @@ export default function Footer() {
     <footer className="footer">
 
       <div className="footer__container">
-        <FooterLink sociallink="https://github.com/M0rl0ck" img="./sprite.svg#github" />
-        <FooterLink sociallink="https://rs.school/js/" img="./sprite.svg#logoRss" />
+        <FooterLink sociallink="https://github.com/M0rl0ck" img="./sprite.svg#github" title="Sergey Sergeev" />
+        <FooterLink sociallink="https://rs.school/js/" img="./sprite.svg#logoRss" title="" />
       </div>
     </footer>
   );
