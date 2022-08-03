@@ -1,0 +1,19 @@
+.header__buttons {
+  display: flex;
+
+}
+
+.button__garage, .button__winners {
+  margin: 5px;
+  width: 120px;
+  height: 50px;
+  border-radius: 15px 15px 0 0;
+  color: azure;
+  background-color: $buttonBg;
+  border: none;
+  cursor: pointer;
+  &.active {
+    background-color: $buttonActiveBg;
+    cursor: auto;
+  }
+}
