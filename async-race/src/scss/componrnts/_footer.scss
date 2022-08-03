@@ -2,25 +2,24 @@
   margin-top: 50px;
   background-color: #18123f;
   color: azure;
-  font-size: 2rem;
+  font-size: 2.2rem;
+  padding: 10px 50px;
+  &__link:hover {
+    color: $hoverLinkColor;
+    svg {
+      fill: $hoverLinkColor;
+    }
+  }
 }
 
 .footer__container {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   padding: 0 40px;
-}
-
-.footer__link {
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-  img {
-    width: 100px;
-    height: auto;
-  }
-  span {
-    padding: 0 10px;
-    color: azure;
+  svg {
+    fill: white;
+    width: 150px;
+    height: 50px;
   }
 }
