@@ -1,0 +1,25 @@
+.trac {
+  margin: 8px 0;
+  padding: 0 10px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  p {
+    padding-left: 20px;
+    font-size: 2.4rem;
+  }
+  &__buttons, &__road {
+    padding: 5px;
+    height: 90px;
+    border-radius: 8px;
+    background-color: rgba($color: #000000, $alpha: .5);
+  }
+
+  &__road {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

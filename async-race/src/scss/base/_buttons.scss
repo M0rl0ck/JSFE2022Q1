@@ -1,19 +1,85 @@
 .header__buttons {
   display: flex;
-
 }
 
-.button__garage, .button__winners {
+.button {
   margin: 5px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background-color: $buttonBg;
+  font-size: 2rem;
+  color: azure;
+  cursor: pointer;
+  transition: all 0.7s;
+  &:hover {
+    color: yellow;
+    box-shadow: inset 70px 0 0 0 $buttonActiveBg,
+                inset -70px 0 0 0 $buttonActiveBg;
+  }
+  &.active {
+    background-color: $buttonActiveBg;
+    &:disabled {
+      background-color: $buttonActiveBg;
+    }
+  }
+  &:disabled {
+    cursor: auto;
+    background-color: $buttonDisabledBg;
+    &:hover {
+      color: azure;
+      box-shadow: 0 0;
+    }
+  }
+}
+
+.button__garage,
+.button__winners {
   width: 120px;
   height: 50px;
   border-radius: 15px 15px 0 0;
-  color: azure;
-  background-color: $buttonBg;
-  border: none;
-  cursor: pointer;
-  &.active {
-    background-color: $buttonActiveBg;
-    cursor: auto;
+}
+
+.createCarButtons {
+  .button {
+    &:hover {
+      box-shadow: inset 110px 0 0 0 $buttonActiveBg,
+                  inset -110px 0 0 0 $buttonActiveBg;
+    }
+
+    height: 50px;
+    &__generateCars {
+      width: 220px;
+    }
+    &__newCar {
+      width: 180px;
+    }
+  }
+}
+
+.startResetButtons {
+  .button {
+    width: 120px;
+    height: 90px;
+  }
+}
+
+.pagination__buttons {
+  .button {
+    width: 80px;
+    height: 60px;
+  }  
+}
+
+.trac__buttonsGroup {
+  .button {
+    width: 90px;
+    height: 30px;
+    &:hover {
+      background-color: $buttonActiveBg;
+    }
+    &:disabled:hover {
+      background-color: $buttonDisabledBg;
+    }
   }
 }

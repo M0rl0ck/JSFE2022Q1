@@ -1,0 +1,33 @@
+.winners {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  h2 {
+    margin: 5px 0;
+    font-size: 5rem;
+    text-align: center;
+    padding: 15px 40px;
+    border-radius: 5px;
+    background-color: rgba($color: #000000, $alpha: .5);
+  }
+}
+
+.winners__container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  p, .winners__table {
+    margin: 5px 0;
+    font-size: 2.6rem;
+    border-radius: 5px;
+    background-color: rgba($color: #000000, $alpha: .5);
+  }
+}
+
+.winners__table {
+  height: 100%;
+  flex-grow: 1;
+}

@@ -1,0 +1,60 @@
+.garage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .tracs__container {
+    flex-grow: 1;
+  }
+  &__title {
+    display: flex;
+    font-size: 2.6rem;
+    justify-content: start;
+    align-items: center;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    gap: 50px
+  }
+}
+
+.generateButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    padding: 5px;
+  }
+}
+
+.createCarButtons {
+  padding: 10px;
+}
+
+.createCar {
+  display: flex;
+  align-items: center;
+  .inputText {
+    width: 340px;
+    height: 40px;
+    outline: 0;
+    background-color: #cacbcb;
+    padding-left: 10px;
+    font-size: 2.4rem;
+  }
+  .inputColor {
+    width: 60px;
+    height: 40px;
+    margin: 0 10px;
+  }
+}
+
+
+
+.pagination__buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 2.8rem;
+  background-color: rgba($color: #000000, $alpha: .8);
+}
