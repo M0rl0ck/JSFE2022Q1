@@ -6,6 +6,7 @@ import { PagesList } from './script/infostructure/types';
 
 function App() {
   const [page, setPage] = useState<PagesList>('garage');
+
   return (
     <div className="App">
       <Header callback={(param: PagesList) => setPage(param)} />
