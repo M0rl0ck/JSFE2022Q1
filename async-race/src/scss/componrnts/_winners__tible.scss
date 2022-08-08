@@ -1,0 +1,15 @@
+.winners__table {
+  height: 100%;
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 4fr 2fr 2fr;
+  grid-auto-rows: 80px;
+  div {
+    border: solid;
+    border-width: 2px;
+    border-color: $borderColor;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+  }
+}

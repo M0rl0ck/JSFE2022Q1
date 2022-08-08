@@ -1,7 +1,8 @@
 import React from 'react';
+import ITrac from '../infostructure/ITrac';
 import Button from './Button';
 
-export default function Trac() {
+export default function Trac({ name, fill }: ITrac) {
   return (
     <div className="trac">
       <div className="trac__buttons">
@@ -39,9 +40,9 @@ export default function Trac() {
         </div>
       </div>
       <div className="trac__road">
-        <p className="nameCar">Aston Martin</p>
+        <p className="nameCar">{ name }</p>
         <div className="trac__car">
-          <svg style={{ fill: '#ffff00', width: '150px', height: '50px' }}>
+          <svg style={{ fill, width: '150px', height: '50px' }}>
             <use xlinkHref="./sprite.svg#car" />
           </svg>
         </div>
