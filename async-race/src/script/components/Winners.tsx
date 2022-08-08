@@ -39,7 +39,7 @@ export default function Winners({ addClass }: IPageDisplay) {
 
           {wins.map((win) => (
             <WinnerCar
-              num={countWinners}
+              num={win.num}
               fill={win.fill}
               name={win.name}
               wins={win.wins}
