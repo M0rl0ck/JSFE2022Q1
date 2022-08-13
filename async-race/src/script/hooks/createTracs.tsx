@@ -27,7 +27,7 @@ export default function useCreateTracs({ callback }: IUseCreateTracs) {
 
   useEffect(() => {
     getGarageCars();
-  }, []);
+  }, [numPage]);
 
   return ({
     cars,

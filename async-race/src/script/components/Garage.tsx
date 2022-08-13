@@ -25,7 +25,7 @@ export default function Garage({ addClass }: IPageDisplay) {
     <div className={`garage ${addClass}`}>
       <GarageTitle countCars={numCars} callback={func} addGarageCar={addGarageCar} />
       <Tracs cars={cars} />
-      <PaginationButtons btClass="tracs" numPage={numPage} setNumPage={setNumPage} />
+      <PaginationButtons btClass="tracs" numPage={numPage} countCars={numCars} setNumPage={setNumPage} />
     </div>
   );
 }
