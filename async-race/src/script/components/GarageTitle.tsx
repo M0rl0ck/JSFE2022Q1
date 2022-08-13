@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
 import IGarageTitie from '../infostructure/IGarageTitel';
 import Button from './Button';
-import { DEFAULTCAR } from '../constants/constants';
+import { CARSMODEL, CARSNAME, DEFAULTCAR } from '../constants/constants';
 import connector from './Connector';
-import ICreateCarRequest from '../infostructure/ICreateCarRequest';
-import useCreateTracs from '../hooks/createTracs';
+import ICar from '../infostructure/ICar';
 
-export default function GarageTitle({ countCars, callback }: IGarageTitie) {
-  const { getGarageCars } = useCreateTracs({ callback });
+export default function GarageTitle({ countCars, callback, addGarageCar }: IGarageTitie) {
   const [imputName, setImputName] = useState<string>(DEFAULTCAR.name);
   const [imputColor, setImputColor] = useState<string>(DEFAULTCAR.color);
-  async function createNewCar(): Promise<void> {
-    const car: ICreateCarRequest = { name: imputName, color: imputColor };
-    await connector.createCar(car);
-    getGarageCars();
+
+  async function createNewCar(name: string, color: string): Promise<void> {
+    const car: ICar = { name, color };
+    const res = await connector.createCar(car);
+    addGarageCar(res);
+    callback();
+  }
+
+  async function createCars(): Promise<void> {
+    for (let i = 0; i < 100; i += 1) {
+      const color = `#${Math.floor(Math.random() * 0xFFFFFF).toString(16)}`;
+      const name = `${CARSNAME[Math.floor(Math.random() * CARSNAME.length)]
+      } ${CARSMODEL[Math.floor(Math.random() * CARSMODEL.length)]}`;
+      createNewCar(name, color);
+    }
   }
   return (
     <div className="garage__title">
@@ -28,7 +37,7 @@ export default function GarageTitle({ countCars, callback }: IGarageTitie) {
             innerStr="Generate 100 cars"
             active={false}
             disabled={false}
-            callback={() => console.log('100')}
+            callback={() => createCars()}
           />
         </div>
 
@@ -50,7 +59,7 @@ export default function GarageTitle({ countCars, callback }: IGarageTitie) {
             innerStr="Create new car"
             active={false}
             disabled={false}
-            callback={() => createNewCar()}
+            callback={() => createNewCar(imputName, imputColor)}
           />
         </div>
       </div>

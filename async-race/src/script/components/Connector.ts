@@ -1,7 +1,7 @@
 import ICar from '../infostructure/ICar';
 import ICreateCarRequest from '../infostructure/ICreateCarRequest';
 import IGetCars from '../infostructure/IGetCars';
-import IRequest from '../infostructure/IRequest';
+// import IRequest from '../infostructure/IRequest';
 import IUpdateWinnerCarRequest from '../infostructure/IUpdateWinnerCarRequest';
 import { Sort, Order, StartEngine } from '../infostructure/types';
 import IWinnerRequest from '../infostructure/IWinnerRequest';
@@ -19,7 +19,7 @@ class Connector {
     endurl: string,
     method: string,
     body: T | undefined = undefined,
-  ): Promise<IRequest> {
+  ) {
     const requestInit = {
       method: method || undefined,
       headers: {
@@ -53,7 +53,7 @@ class Connector {
     return result;
   }
 
-  async createCar(body: ICreateCarRequest): Promise<ICar[]> {
+  async createCar(body: ICreateCarRequest): Promise<ICar> {
     const { result } = await this.request('garage', 'POST', body);
     return result;
   }

@@ -1,3 +1,5 @@
+import ICar from './ICar';
+
 export default interface ITracs {
-  callback(count: number): void
+  cars:ICar[]
 }

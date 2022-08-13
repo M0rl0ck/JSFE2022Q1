@@ -48,7 +48,7 @@ export default function Winners({ addClass }: IPageDisplay) {
             />
           ))}
         </div>
-        <PaginationButtons btClass="winners" />
+        <PaginationButtons btClass="winners" numPage={numPage} setNumPage={() => console.log('1')} />
       </div>
     </div>
   );
