@@ -16,13 +16,23 @@ export default function useCreateTracs({ callback }: IUseCreateTracs) {
   async function getGarageCars(): Promise<void> {
     updateCars();
   }
-  async function addGarageCar(car: ICar): Promise<void> {
+  async function addGarageCar(): Promise<void> {
     if (cars.length < LIMITCAR.cars) {
-      console.log(cars);
-      setCars((prev) => [...prev, car]);
       updateCars();
-      console.log(car);
     }
+  }
+
+  async function deleteCar(id: number): Promise<void> {
+    await connector.deleteCar(id);
+    await connector.deleteWinnerCar(id);
+    await updateCars();
+    console.log(cars.length);
+    setTimeout(() => {
+      if (!cars.length && numPage > 1) {
+        console.log('0');
+        setNumPage((prev) => prev - 1);
+      }
+    }, 0);
   }
 
   useEffect(() => {
@@ -34,5 +44,6 @@ export default function useCreateTracs({ callback }: IUseCreateTracs) {
     addGarageCar,
     numPage,
     setNumPage,
+    deleteCar,
   });
 }

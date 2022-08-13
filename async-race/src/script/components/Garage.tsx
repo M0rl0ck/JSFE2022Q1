@@ -18,13 +18,13 @@ export default function Garage({ addClass }: IPageDisplay) {
   };
 
   const {
-    cars, addGarageCar, numPage, setNumPage,
+    cars, addGarageCar, numPage, setNumPage, deleteCar,
   } = useCreateTracs({ callback: func });
 
   return (
     <div className={`garage ${addClass}`}>
       <GarageTitle countCars={numCars} callback={func} addGarageCar={addGarageCar} />
-      <Tracs cars={cars} />
+      <Tracs cars={cars} deleteCar={deleteCar} />
       <PaginationButtons btClass="tracs" numPage={numPage} countCars={numCars} setNumPage={setNumPage} />
     </div>
   );

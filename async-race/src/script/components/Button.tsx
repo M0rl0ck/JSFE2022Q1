@@ -4,7 +4,6 @@ import { IButton } from '../infostructure/IButton';
 export default function Button({
   btClass, innerStr, active, disabled, callback,
 }: IButton) {
-  // const [isActive, setIsActive] = useState({ active });
   return (
     <button
       type="button"

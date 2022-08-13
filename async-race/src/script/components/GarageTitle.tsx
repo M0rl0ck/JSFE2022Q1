@@ -11,8 +11,8 @@ export default function GarageTitle({ countCars, callback, addGarageCar }: IGara
 
   async function createNewCar(name: string, color: string): Promise<void> {
     const car: ICar = { name, color };
-    const res = await connector.createCar(car);
-    addGarageCar(res);
+    await connector.createCar(car);
+    addGarageCar();
     callback();
   }
 
