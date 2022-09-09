@@ -8,12 +8,15 @@ import ICar from '../infostructure/ICar';
 export default function GarageTitle({ countCars, callback, addGarageCar }: IGarageTitie) {
   const [imputName, setImputName] = useState<string>(DEFAULTCAR.name);
   const [imputColor, setImputColor] = useState<string>(DEFAULTCAR.color);
+  const [isEdit, setIsEdit] = useState<boolean>(false);
 
   async function createNewCar(name: string, color: string): Promise<void> {
     const car: ICar = { name, color };
     await connector.createCar(car);
-    addGarageCar();
-    callback();
+    if (!isEdit) {
+      addGarageCar();
+      callback();
+    }
   }
 
   async function createCars(): Promise<void> {
@@ -45,18 +48,18 @@ export default function GarageTitle({ countCars, callback, addGarageCar }: IGara
           <input
             type="text"
             className="inputText"
-            defaultValue={DEFAULTCAR.name}
+            value={imputName}
             onChange={(e) => setImputName(e.target.value)}
           />
           <input
             type="color"
             className="inputColor"
-            defaultValue={DEFAULTCAR.color}
+            value={imputColor}
             onChange={(e) => setImputColor(e.target.value)}
           />
           <Button
             btClass="button__newCar"
-            innerStr="Create new car"
+            innerStr={isEdit ? 'Edit car' : 'Create new car'}
             active={false}
             disabled={false}
             callback={() => createNewCar(imputName, imputColor)}
@@ -77,7 +80,7 @@ export default function GarageTitle({ countCars, callback, addGarageCar }: IGara
           innerStr="Start"
           active={false}
           disabled={false}
-          callback={() => console.log('start')}
+          callback={() => setIsEdit(!isEdit)}
         />
       </div>
     </div>

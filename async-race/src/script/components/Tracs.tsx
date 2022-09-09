@@ -3,7 +3,7 @@ import { DEFAULTCAR } from '../constants/constants';
 import ITracs from '../infostructure/ITracs';
 import Trac from './Trac';
 
-export default function Tracs({ cars, deleteCar }: ITracs) {
+export default function Tracs({ cars, deleteCar, deleteWinner }: ITracs) {
   return (
     <div className="tracs__container">
       { cars.map((car) => (
@@ -13,6 +13,7 @@ export default function Tracs({ cars, deleteCar }: ITracs) {
           deleteCar={deleteCar}
           id={car.id ? car.id : DEFAULTCAR.id}
           key={car.id}
+          deleteWinner={deleteWinner}
         />
       )) }
     </div>

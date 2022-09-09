@@ -3,7 +3,7 @@ import ITrac from '../infostructure/ITrac';
 import Button from './Button';
 
 export default function Trac({
-  name, deleteCar, id, fill,
+  name, deleteCar, id, fill, deleteWinner,
 }: ITrac) {
   return (
     <div className="trac">
@@ -37,7 +37,7 @@ export default function Trac({
             innerStr="delete"
             active={false}
             disabled={false}
-            callback={() => deleteCar(id)}
+            callback={() => { deleteCar(id); deleteWinner(id); }}
           />
         </div>
       </div>

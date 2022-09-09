@@ -3,4 +3,5 @@ export default interface ITrac {
   deleteCar: (id: number) => Promise<void>
   id: number
   fill: string
+  deleteWinner(id: number): void
 }
