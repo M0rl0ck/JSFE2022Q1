@@ -3,7 +3,7 @@ import ITrac from '../infostructure/ITrac';
 import Button from './Button';
 
 export default function Trac({
-  name, deleteCar, id, fill, deleteWinner,
+  name, deleteCar, id, fill, deleteWinner, setEditCar,
 }: ITrac) {
   return (
     <div className="trac">
@@ -30,7 +30,7 @@ export default function Trac({
             innerStr="edit"
             active={false}
             disabled={false}
-            callback={() => console.log('edit')}
+            callback={() => setEditCar(id, name, fill)}
           />
           <Button
             btClass="button__trac"

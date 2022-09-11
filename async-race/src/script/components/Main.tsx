@@ -14,6 +14,16 @@ export default function Main({ page }: IMain) {
     deleteCar,
     numCars,
     updateNumCars,
+    createCars,
+    createNewCar,
+    isEdit,
+    setEditCar,
+    updateCar,
+    editId,
+    imputName,
+    imputColor,
+    setImputName,
+    setImputColor,
   } = useCreateTracs();
 
   const {
@@ -35,6 +45,16 @@ export default function Main({ page }: IMain) {
         numCars={numCars}
         updateNumCars={updateNumCars}
         deleteWinner={deleteWinner}
+        createCars={createCars}
+        createNewCar={createNewCar}
+        isEdit={isEdit}
+        setEditCar={setEditCar}
+        updateCar={updateCar}
+        editId={editId}
+        imputName={imputName}
+        imputColor={imputColor}
+        setImputName={setImputName}
+        setImputColor={setImputColor}
       />
       <Winners
         addClass={page === 'winners' ? '' : 'hide'}

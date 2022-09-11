@@ -18,6 +18,16 @@ export interface IGaragePageDisplay extends IPageDisplay {
   setNumPage: (num: number) => void
   deleteCar: (id: number) => Promise<void>
   numCars: number
-  updateNumCars(count?: number): void
-  deleteWinner(id: number): void
+  updateNumCars: (count?: number) => void
+  deleteWinner: (id: number) => void
+  createCars(): Promise<void>
+  createNewCar: (name: string, color: string) => Promise<void>
+  isEdit: boolean
+  setEditCar: (id: number, name: string, color: string) => void
+  updateCar: (id:number, name: string, color: string) => Promise<void>
+  editId: number
+  imputName: string
+  imputColor:string
+  setImputName: (name: string) => void,
+  setImputColor: (color: string) => void,
 }

@@ -7,22 +7,42 @@ import Tracs from './Tracs';
 export default function Garage({
   addClass,
   cars,
-  addGarageCar,
   numPage,
   setNumPage,
   deleteCar,
   numCars,
-  updateNumCars,
   deleteWinner,
+  createCars,
+  createNewCar,
+  isEdit,
+  setEditCar,
+  updateCar,
+  editId,
+  imputName,
+  imputColor,
+  setImputName,
+  setImputColor,
 }: IGaragePageDisplay) {
   return (
     <div className={`garage ${addClass}`}>
       <GarageTitle
         countCars={numCars}
-        callback={updateNumCars}
-        addGarageCar={addGarageCar}
+        createCars={createCars}
+        createNewCar={createNewCar}
+        isEdit={isEdit}
+        updateCar={updateCar}
+        editId={editId}
+        imputName={imputName}
+        imputColor={imputColor}
+        setImputName={setImputName}
+        setImputColor={setImputColor}
       />
-      <Tracs cars={cars} deleteCar={deleteCar} deleteWinner={deleteWinner} />
+      <Tracs
+        cars={cars}
+        deleteCar={deleteCar}
+        deleteWinner={deleteWinner}
+        setEditCar={setEditCar}
+      />
       <PaginationButtons
         btClass="tracs"
         numPage={numPage}

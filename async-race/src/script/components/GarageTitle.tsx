@@ -1,32 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import IGarageTitie from '../infostructure/IGarageTitel';
 import Button from './Button';
-import { CARSMODEL, CARSNAME, DEFAULTCAR } from '../constants/constants';
-import connector from './Connector';
-import ICar from '../infostructure/ICar';
 
-export default function GarageTitle({ countCars, callback, addGarageCar }: IGarageTitie) {
-  const [imputName, setImputName] = useState<string>(DEFAULTCAR.name);
-  const [imputColor, setImputColor] = useState<string>(DEFAULTCAR.color);
-  const [isEdit, setIsEdit] = useState<boolean>(false);
+export default function GarageTitle({
+  countCars,
+  createCars,
+  createNewCar,
+  isEdit,
+  updateCar,
+  editId,
+  imputName,
+  imputColor,
+  setImputName,
+  setImputColor,
+}: IGarageTitie) {
+  // const [imputName, setImputName] = useState<string>(DEFAULTCAR.name);
+  // const [imputColor, setImputColor] = useState<string>(DEFAULTCAR.color);
 
-  async function createNewCar(name: string, color: string): Promise<void> {
-    const car: ICar = { name, color };
-    await connector.createCar(car);
-    if (!isEdit) {
-      addGarageCar();
-      callback();
-    }
-  }
-
-  async function createCars(): Promise<void> {
-    for (let i = 0; i < 100; i += 1) {
-      const color = `#${Math.floor(Math.random() * 0xFFFFFF).toString(16)}`;
-      const name = `${CARSNAME[Math.floor(Math.random() * CARSNAME.length)]
-      } ${CARSMODEL[Math.floor(Math.random() * CARSMODEL.length)]}`;
-      createNewCar(name, color);
-    }
-  }
   return (
     <div className="garage__title">
       <div className="createCarButtons">
@@ -62,7 +52,11 @@ export default function GarageTitle({ countCars, callback, addGarageCar }: IGara
             innerStr={isEdit ? 'Edit car' : 'Create new car'}
             active={false}
             disabled={false}
-            callback={() => createNewCar(imputName, imputColor)}
+            callback={() => {
+              if (isEdit) {
+                updateCar(editId, imputName, imputColor);
+              } else { createNewCar(imputName, imputColor); }
+            }}
           />
         </div>
       </div>
@@ -80,7 +74,7 @@ export default function GarageTitle({ countCars, callback, addGarageCar }: IGara
           innerStr="Start"
           active={false}
           disabled={false}
-          callback={() => setIsEdit(!isEdit)}
+          callback={() => console.log('start')}
         />
       </div>
     </div>

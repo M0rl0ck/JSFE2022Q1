@@ -4,4 +4,5 @@ export default interface ITrac {
   id: number
   fill: string
   deleteWinner(id: number): void
+  setEditCar: (id: number, name: string, color: string) => void
 }
